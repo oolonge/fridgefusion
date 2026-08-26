@@ -1,89 +1,54 @@
 # FridgeFusion
 
-**Десктопное приложение для поиска рецептов с системой заменителей ингредиентов**
+Recipe search driven by what is actually in your fridge: it matches recipes
+against the ingredients you have and, when something is missing, proposes
+substitutes ranked by a similarity coefficient over a base of 250 ingredients.
 
-FridgeFusion — система управления рецептами с поиском по ингредиентам. Производит автоматический подбор заменителей ингредиентов на основе коэффициентов похожести.
+Built at BMSTU IU7 across three courses — databases, software design and web
+development — each rebuilding the same domain on a different architecture.
 
-## Функциональные возможности
+## Structure
 
-- Поиск рецептов по ингредиентам с учетом возможных замен
-- Многопользовательская система с ролевой моделью (гость, пользователь, администратор)
-- Система избранных рецептов и отзывов с рейтингами
-- Административная панель для управления пользователями и контентом
-- База знаний из 250 ингредиентов с коэффициентами похожести
+| Path      | Contents                                                        |
+|-----------|------------------------------------------------------------------|
+| `desktop` | Qt desktop application, layered architecture                     |
+| `web`     | Service-oriented version: gateway, auth, core and data services  |
+| `docs`    | BPMN process, ER diagram, use cases                              |
 
-## Архитектура
+## Desktop
 
-Проект построен на **Clean Architecture** с четким разделением слоев:
+Five layers, each a separate static library, dependencies pointing inward:
 
 ```
-├── Domain Layer      # Business entities & DTOs
-├── Application Layer # Use cases & business logic  
-├── Infrastructure    # Database & external services
-└── Presentation      # Qt UI (MVP pattern)
+libs/core            # entities and repository interfaces
+libs/application     # use cases
+libs/infrastructure  # PostgreSQL repositories
+libs/presentation    # Qt widgets, MVP
+libs/utils           # logging, configuration
 ```
 
-## Технологический стек
-
-- Язык: C++17
-- GUI: Qt 6 (Widgets)
-- База данных: PostgreSQL
-- Архитектура: Clean Architecture + MVP
-- Безопасность: PBKDF2 хеширование паролей
-- Тестирование: Многопоточное стресс-тестирование
-
-## Системные требования
-
-- Qt 6.0+ с SQL модулем
-- PostgreSQL 12+
-- C++17 совместимый компилятор
-- Поддерживаемые ОС: Windows, macOS, Linux
-
-## Установка и запуск
-
-### 1. Клонирование репозитория
-```bash
-git clone https://github.com/username/FridgeFusion.git
-cd FridgeFusion
+```sh
+cd desktop && qmake && make
 ```
 
-### 2. Настройка базы данных
-```bash
-# Создайте БД PostgreSQL и выполните:
-psql -d your_db -f struct_script.sql
-psql -d your_db -f trigger.sql
+Tests live in `desktop/tests`; `schemes/` holds the database schema.
+
+## Web
+
+Four services behind a gateway, orchestrated with Docker Compose, plus a REST
+API with Swagger UI and a Caddy front end.
+
+```sh
+cd web
+cp config.json.example config.json
+docker compose up -d
 ```
 
-### 3. Конфигурация
-Создайте `config.json` в корне проекта:
-```json
-{
-  "database": {
-    "host": "localhost",
-    "port": 5432,
-    "name": "your_db_name",
-    "username": "your_username",
-    "password": "your_password"
-  }
-}
-```
+Credentials in `docker-compose.yml` are placeholders — set `POSTGRES_PASSWORD`
+and `JWT_SECRET` in the environment before running anywhere real.
 
-### 4. Сборка
-```bash
-qmake FridgeFusion.pro
-make
-./bin/FridgeFusion
-```
+`web/cli` is a console client against the same API.
 
-## Тестирование
+## Stack
 
-Проект включает многопоточное стресс-тестирование:
-
-```bash
-cd stress_tests
-qmake stress_tests.pro
-make
-./stress_tests
-```
-
-Система тестирует производительность при нагрузке до 100 одновременных пользователей с четырьмя сценариями использования: регистрация/аутентификация, поиск рецептов, управление избранным, система отзывов.
+C++17, Qt 6, PostgreSQL, Docker, Caddy, Swagger

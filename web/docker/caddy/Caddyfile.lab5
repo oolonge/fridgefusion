@@ -1,0 +1,231 @@
+# FridgeFusion Load Balancer and Reverse Proxy
+
+# Global options
+{
+	admin 0.0.0.0:2019
+
+	auto_https off
+
+	# Enable HTTP/2 over cleartext (h2c)
+	servers {
+		protocols h1 h2c
+	}
+}
+
+http://:8000 {
+	encode gzip
+
+	# Custom Server header
+	header Server "FridgeFusion/2.0 (Lab#5)"
+
+	# Logging
+	log {
+		output file /var/log/caddy/access.log
+		format console
+	}
+
+	# === MAIN APPLICATION (/) ===
+
+	# API Routes - Load Balanced
+	# GET requests: weighted 2:1:1 (master:ro1:ro2)
+	# POST/PUT/PATCH/DELETE: only master
+	@api_get {
+		path /api/v2/*
+		method GET
+	}
+
+	@api_write {
+		path /api/v2/*
+		method POST PUT PATCH DELETE
+	}
+
+	# GET requests - (2:1:1)
+	handle @api_get {
+		reverse_proxy backend-master:8080 backend-master:8080 backend-ro1:8081 backend-ro2:8082 {
+			lb_policy round_robin
+
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			fail_duration 30s
+			max_fails 3
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# POST/PUT/PATCH/DELETE requests - only to master
+	handle @api_write {
+		reverse_proxy backend-master:8080 {
+			# Health check (Bonus #3)
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# Swagger documentation (no load balancing, just master)
+	handle /api/docs {
+		reverse_proxy backend-master:8080
+	}
+
+	handle /api/docs/* {
+		reverse_proxy backend-master:8080
+	}
+
+	handle /swagger_ui/* {
+		reverse_proxy backend-master:8080
+	}
+
+	# Static files - with caching
+	@static {
+		path /styles/* /legacy/* /documentation/* /reserved/* /status/* /management/*
+	}
+
+	handle @static {
+		# Cache static files for 1 hour
+		header Cache-Control "public, max-age=3600"
+
+		# Serve static files
+		root * /srv/web_server
+		file_server
+	}
+
+	# Admin - Adminer proxy
+	handle /admin/* {
+		reverse_proxy localhost:8081
+	}
+
+	handle /admin {
+		redir /admin/ permanent
+	}
+
+	# Metrics endpoint
+	handle /metrics {
+		metrics
+	}
+
+	# Health endpoint for Caddy itself
+	handle /health {
+		respond "OK" 200
+	}
+
+	# === MIRROR APPLICATION (/mirror) ===
+
+	# Mirror API Routes - Load Balanced
+	@mirror_api_get {
+		path /mirror/api/v2/*
+		method GET
+	}
+
+	@mirror_api_write {
+		path /mirror/api/v2/*
+		method POST PUT PATCH DELETE
+	}
+
+	# Mirror GET requests - load balanced with weights (2:1:1)
+	handle @mirror_api_get {
+		uri strip_prefix /mirror
+		reverse_proxy backend-mirror-master:8090 backend-mirror-master:8090 backend-mirror-ro1:8091 backend-mirror-ro2:8092 {
+			# Load balancing policy (adding master twice for 2:1:1 ratio)
+			lb_policy round_robin
+
+			# Health checks (Bonus #3)
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			# Fail timeout
+			fail_duration 30s
+			max_fails 3
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# Mirror POST/PUT/PATCH/DELETE requests - only to master
+	handle @mirror_api_write {
+		uri strip_prefix /mirror
+		reverse_proxy backend-mirror-master:8090 {
+			# Health check (Bonus #3)
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# Mirror Swagger documentation
+	handle /mirror/api/docs {
+		uri strip_prefix /mirror
+		reverse_proxy backend-mirror-master:8090
+	}
+
+	handle /mirror/api/docs/* {
+		uri strip_prefix /mirror
+		reverse_proxy backend-mirror-master:8090
+	}
+
+	handle /mirror/swagger_ui/* {
+		uri strip_prefix /mirror
+		reverse_proxy backend-mirror-master:8090
+	}
+
+	# Mirror static files - with caching
+	@mirror_static {
+		path /mirror/styles/* /mirror/legacy/* /mirror/documentation/* /mirror/status/* /mirror/management/*
+	}
+
+	handle @mirror_static {
+		# Cache static files for 1 hour
+		header Cache-Control "public, max-age=3600"
+
+		uri strip_prefix /mirror
+		root * /srv/web_server
+		file_server
+	}
+
+	# Mirror root page
+	handle /mirror/* {
+		uri strip_prefix /mirror
+		root * /srv/web_server/static
+		try_files {path} /index.html
+		file_server
+	}
+
+	handle /mirror {
+		redir /mirror/ permanent
+	}
+
+	# === MONITORING (/monitoring) ===
+
+	# Grafana dashboard
+	handle_path /monitoring/* {
+		reverse_proxy grafana:3000
+	}
+
+	handle /monitoring {
+		redir /monitoring/ permanent
+	}
+
+	# === DEFAULT (/) ===
+
+	# Main page - static SPA
+	handle {
+		root * /srv/web_server/static
+		try_files {path} /index.html
+		file_server
+	}
+}

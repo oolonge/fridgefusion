@@ -1,0 +1,12 @@
+{
+    "database": {
+        "host": "postgres-slave",
+        "name": "fridgefusion",
+        "password": "readonly_secret",
+        "port": 5432,
+        "username": "readonly_user"
+    },
+    "logging": {
+        "directory": "/app/logs"
+    }
+}

@@ -1,0 +1,12 @@
+{
+    "database": {
+        "host": "localhost",
+        "name": "postgres",
+        "password": "change-me",
+        "port": 5432,
+        "username": "postgres"
+    },
+    "logging": {
+        "directory": "./logs"
+    }
+}

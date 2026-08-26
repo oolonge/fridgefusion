@@ -1,0 +1,2661 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!--Created by yFiles for HTML 3.0-->
+<graphml xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml.html/2.0/ygraphml.xsd " xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:yca="http://www.yworks.com/xml/yfiles-compat-arrows/1.0" xmlns:ycns="http://www.yworks.com/xml/yfiles-compat-node-styles/1.0" xmlns:yjs2="http://www.yworks.com/xml/yfiles-for-html/2.0/xaml" xmlns:demostyle2="http://www.yworks.com/yFilesHTML/demos/FlatDemoStyle/2.0" xmlns:demostyle="http://www.yworks.com/yFilesHTML/demos/FlatDemoStyle/1.0" xmlns:icon-style="http://www.yworks.com/yed-live/icon-style/1.0" xmlns:bpmn="http://www.yworks.com/xml/yfiles-bpmn/2.0" xmlns:demotablestyle="http://www.yworks.com/yFilesHTML/demos/FlatDemoTableStyle/1.0" xmlns:uml="http://www.yworks.com/yFilesHTML/demos/UMLDemoStyle/1.0" xmlns:GraphvizNodeStyle="http://www.yworks.com/yFilesHTML/graphviz-node-style/1.0" xmlns:Vue2jsNodeStyle="http://www.yworks.com/demos/yfiles-vuejs-node-style/2.0" xmlns:Vue3jsNodeStyle="http://www.yworks.com/demos/yfiles-vue-node-style/3.0" xmlns:explorer-style="http://www.yworks.com/data-explorer/1.0" xmlns:yx="http://www.yworks.com/xml/yfiles-common/4.0" xmlns:y="http://www.yworks.com/xml/yfiles-common/3.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/3.0" xmlns:yjs="http://www.yworks.com/xml/yfiles-for-html/3.0/xaml" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+	<key id="d0" for="node" attr.type="int" attr.name="zOrder" y:attr.uri="http://www.yworks.com/xml/yfiles-z-order/1.0/zOrder"/>
+	<key id="d1" for="node" attr.type="boolean" attr.name="Expanded" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/Expanded">
+		<default>true</default>
+	</key>
+	<key id="d2" for="node" attr.type="string" attr.name="url"/>
+	<key id="d3" for="node" attr.type="string" attr.name="description"/>
+	<key id="d4" for="node" attr.name="NodeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeLabels"/>
+	<key id="d5" for="node" attr.name="NodeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeGeometry"/>
+	<key id="d6" for="all" attr.name="UserTags" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/UserTags"/>
+	<key id="d7" for="node" attr.name="NodeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/NodeStyle"/>
+	<key id="d8" for="node" attr.name="NodeViewState" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/NodeViewState"/>
+	<key id="d9" for="edge" attr.type="string" attr.name="url"/>
+	<key id="d10" for="edge" attr.type="string" attr.name="description"/>
+	<key id="d11" for="edge" attr.name="EdgeLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeLabels"/>
+	<key id="d12" for="edge" attr.name="EdgeGeometry" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeGeometry"/>
+	<key id="d13" for="edge" attr.name="EdgeStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/EdgeStyle"/>
+	<key id="d14" for="edge" attr.name="EdgeViewState" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/EdgeViewState"/>
+	<key id="d15" for="port" attr.name="PortLabels" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLabels"/>
+	<key id="d16" for="port" attr.name="PortLocationParameter" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortLocationParameter">
+		<default>
+			<x:Static Member="y:FreeNodePortLocationModel.NodeCenterAnchored"/>
+		</default>
+	</key>
+	<key id="d17" for="port" attr.name="PortStyle" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/PortStyle">
+		<default>
+			<x:Static Member="y:VoidPortStyle.Instance"/>
+		</default>
+	</key>
+	<key id="d18" for="port" attr.name="PortViewState" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/folding/1.1/PortViewState"/>
+	<key id="d19" attr.name="SharedData" y:attr.uri="http://www.yworks.com/xml/yfiles-common/2.0/SharedData"/>
+	<data key="d19">
+		<y:SharedData>
+			<yjs:Color x:Key="1" value="#FF607D8B"/>
+			<yjs:CssFill x:Key="2" cssString="#a3f1bb"/>
+			<yjs:CssFill x:Key="3" cssString="#0b7189"/>
+			<yjs:CssFill x:Key="4" cssString="#FFF"/>
+			<yjs:CssFill x:Key="5" cssString="#FFF"/>
+			<yjs:CssFill x:Key="6" cssString="#0b7189"/>
+			<yjs:Stroke x:Key="7" lineCap="SQUARE" thickness="2">
+				<yjs:Stroke.fill>
+					<yjs:CssFill cssString="#ABABAB"/>
+				</yjs:Stroke.fill>
+				<yjs:Stroke.dashStyle>
+					<yjs:DashStyle dashes="1 2" offset="0.5"/>
+				</yjs:Stroke.dashStyle>
+			</yjs:Stroke>
+			<y:FreeNodePortLocationModelParameter x:Key="8" Ratio="0.5,0.010638297872340441"/>
+			<yjs:PolylineEdgeStyle x:Key="9" stroke="{y:GraphMLReference 10}" targetArrow="{y:GraphMLReference 11}" sourceArrow="{y:GraphMLReference 12}"/>
+			<yjs:Stroke x:Key="10" dashStyle="Dash">
+				<yjs:Stroke.fill>
+					<yjs:CssFill cssString="#000000"/>
+				</yjs:Stroke.fill>
+			</yjs:Stroke>
+			<yjs:Arrow x:Key="11" fill="BLACK">
+				<yjs:Arrow.stroke>
+					<yjs:Stroke>
+						<yjs:Stroke.fill>
+							<yjs:CssFill cssString="#000000"/>
+						</yjs:Stroke.fill>
+					</yjs:Stroke>
+				</yjs:Arrow.stroke>
+			</yjs:Arrow>
+			<yjs:Arrow x:Key="12" fill="BLACK" type="NONE"/>
+			<yjs:PolylineEdgeStyle x:Key="13" stroke="{y:GraphMLReference 10}" targetArrow="{y:GraphMLReference 11}" sourceArrow="{y:GraphMLReference 12}"/>
+			<yjs:Color x:Key="14" value="#FF4CAF50"/>
+			<yjs:CssFill x:Key="15" cssString="#a3f1bb"/>
+			<y:FreeNodePortLocationModelParameter x:Key="16" Ratio="0.5,0.010638297872340441"/>
+			<y:FreeNodePortLocationModelParameter x:Key="17" Ratio="0.509,0.5416666666666666"/>
+			<y:FreeNodePortLocationModelParameter x:Key="18" Ratio="0.505,0.4730392156862745"/>
+			<y:FreeNodePortLocationModelParameter x:Key="19" Ratio="0.997757344169019,0.5"/>
+			<y:FreeNodePortLocationModelParameter x:Key="20" Ratio="0.9977614174154048,0.5"/>
+			<y:FreeNodePortLocationModelParameter x:Key="21" Ratio="0.5,0.007352941176470618"/>
+			<y:FreeNodePortLocationModelParameter x:Key="22" Ratio="0.5,0.007352941176470562"/>
+			<y:FreeNodePortLocationModelParameter x:Key="23" Ratio="0.0025049873181702265,0.5"/>
+			<yjs:PolylineEdgeStyle x:Key="24" stroke="{y:GraphMLReference 25}" targetArrow="{y:GraphMLReference 12}" sourceArrow="{y:GraphMLReference 26}"/>
+			<yjs:Stroke x:Key="25" dashStyle="Dash">
+				<yjs:Stroke.fill>
+					<yjs:CssFill cssString="#000000"/>
+				</yjs:Stroke.fill>
+			</yjs:Stroke>
+			<yjs:Arrow x:Key="26" fill="WHITE" type="TRIANGLE">
+				<yjs:Arrow.stroke>
+					<yjs:Stroke>
+						<yjs:Stroke.fill>
+							<yjs:CssFill cssString="#000000"/>
+						</yjs:Stroke.fill>
+					</yjs:Stroke>
+				</yjs:Arrow.stroke>
+			</yjs:Arrow>
+			<yjs:Arrow x:Key="27" fill="BLACK" type="NONE"/>
+			<yjs:PolylineEdgeStyle x:Key="28" sourceArrow="{y:GraphMLReference 27}">
+				<yjs:PolylineEdgeStyle.stroke>
+					<yjs:Stroke dashStyle="Dash">
+						<yjs:Stroke.fill>
+							<yjs:CssFill cssString="#000000"/>
+						</yjs:Stroke.fill>
+					</yjs:Stroke>
+				</yjs:PolylineEdgeStyle.stroke>
+				<yjs:PolylineEdgeStyle.targetArrow>
+					<yjs:Arrow fill="BLACK">
+						<yjs:Arrow.stroke>
+							<yjs:Stroke>
+								<yjs:Stroke.fill>
+									<yjs:CssFill cssString="#000000"/>
+								</yjs:Stroke.fill>
+							</yjs:Stroke>
+						</yjs:Arrow.stroke>
+					</yjs:Arrow>
+				</yjs:PolylineEdgeStyle.targetArrow>
+			</yjs:PolylineEdgeStyle>
+			<yjs:Stroke x:Key="29" fill="{y:GraphMLReference 38}"/>
+			<yjs:CssFill x:Key="30" cssString="#000000"/>
+			<yjs:Stroke x:Key="31" fill="{y:GraphMLReference 30}"/>
+			<yjs:LabelStyle x:Key="32" verticalTextAlignment="CENTER" horizontalTextAlignment="CENTER">
+				<yjs:LabelStyle.font>
+					<yjs:Font fontSize="12" lineSpacing="0.2"/>
+				</yjs:LabelStyle.font>
+				<yjs:LabelStyle.textFill>
+					<yjs:CssFill cssString="black"/>
+				</yjs:LabelStyle.textFill>
+			</yjs:LabelStyle>
+			<yjs:PolylineEdgeStyle x:Key="33" stroke="{y:GraphMLReference 29}" targetArrow="{y:GraphMLReference 37}" sourceArrow="{y:GraphMLReference 27}"/>
+			<yjs:PolylineEdgeStyle x:Key="34" stroke="{y:GraphMLReference 25}" targetArrow="{y:GraphMLReference 12}" sourceArrow="{y:GraphMLReference 26}"/>
+			<yjs:Arrow x:Key="35" fill="{y:GraphMLReference 30}" cropLength="1" type="DIAMOND">
+				<yjs:Arrow.stroke>
+					<yjs:Stroke fill="{y:GraphMLReference 30}"/>
+				</yjs:Arrow.stroke>
+			</yjs:Arrow>
+			<yjs:PolylineEdgeStyle x:Key="36" stroke="{y:GraphMLReference 10}" targetArrow="{y:GraphMLReference 11}" sourceArrow="{y:GraphMLReference 12}"/>
+			<yjs:Arrow x:Key="37" stroke="{y:GraphMLReference 29}" fill="BLACK"/>
+			<yjs:CssFill x:Key="38" cssString="#000000"/>
+			<yjs:Stroke x:Key="39" fill="{y:GraphMLReference 38}" lineCap="SQUARE" dashStyle="Dash"/>
+			<yjs:PolylineEdgeStyle x:Key="40" stroke="{y:GraphMLReference 39}" targetArrow="{y:GraphMLReference 37}" sourceArrow="{y:GraphMLReference 27}"/>
+			<yjs:PolylineEdgeStyle x:Key="41" targetArrow="{y:GraphMLReference 27}">
+				<yjs:PolylineEdgeStyle.stroke>
+					<yjs:Stroke dashStyle="Dash">
+						<yjs:Stroke.fill>
+							<yjs:CssFill cssString="#000000"/>
+						</yjs:Stroke.fill>
+					</yjs:Stroke>
+				</yjs:PolylineEdgeStyle.stroke>
+				<yjs:PolylineEdgeStyle.sourceArrow>
+					<yjs:Arrow fill="WHITE" type="TRIANGLE">
+						<yjs:Arrow.stroke>
+							<yjs:Stroke>
+								<yjs:Stroke.fill>
+									<yjs:CssFill cssString="#000000"/>
+								</yjs:Stroke.fill>
+							</yjs:Stroke>
+						</yjs:Arrow.stroke>
+					</yjs:Arrow>
+				</yjs:PolylineEdgeStyle.sourceArrow>
+			</yjs:PolylineEdgeStyle>
+		</y:SharedData>
+	</data>
+	<graph id="G" edgedefault="directed">
+		<data key="d6">
+			<y:Json>{"version":"2.0.0","origin":"yed-live","theme":{"name":"light","version":"1.0.0"},"layout":"layout-hierarchic","config":{"p_useDrawingAsSketch":false,"p_selectedElementsIncrementally":false,"p_nodeToNodeDistance":30,"p_automaticEdgeGroupingEnabled":false,"p_considerNodeLabels":true,"p_edgeLabeling":1,"p_orientation":0,"p_edgeRouting":0}}</y:Json>
+		</data>
+		<node id="n0">
+			<data key="d0">44</data>
+			<data key="d5">
+				<y:RectD X="235.30293159802773" Y="1311.0245304192322" Width="1696.0078984592474" Height="120.95615864684851"/>
+			</data>
+			<data key="d7">
+				<yjs:GroupNodeStyle tabWidth="30" tabHeight="20" tabPadding="3" tabPosition="NONE" iconForegroundFill="{y:GraphMLReference 3}" iconOffset="2" minimumContentAreaSize="0,0" hitTransparentContentArea="true" tabBackgroundFill="{y:GraphMLReference 4}" contentAreaFill="{y:GraphMLReference 5}" tabFill="{y:GraphMLReference 6}" stroke="{y:GraphMLReference 7}" cssClass="y-group-node"/>
+			</data>
+			<graph id="n0:" edgedefault="directed">
+				<node id="n0::n0">
+					<data key="d0">0</data>
+					<data key="d5">
+						<y:RectD X="1021.2769292392632" Y="1320.1443747287235" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeRepository" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+				</node>
+				<node id="n0::n1">
+					<data key="d0">1</data>
+					<data key="d5">
+						<y:RectD X="593.6264700888364" Y="1320.1443747287235" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="FridgeRepository" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+				</node>
+				<node id="n0::n2">
+					<data key="d0">2</data>
+					<data key="d5">
+						<y:RectD X="1674.3108300572749" Y="1320.1443747287235" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserRepository" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.009615384615384637"/>
+						</data>
+					</port>
+					<port name="p1"/>
+				</node>
+				<node id="n0::n3">
+					<data key="d0">4</data>
+					<data key="d5">
+						<y:RectD X="242.30293159802773" Y="1320.1443747287235" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="IngredientRepository" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+				</node>
+			</graph>
+		</node>
+		<node id="n1">
+			<data key="d0">45</data>
+			<data key="d5">
+				<y:RectD X="-37.78337324406607" Y="-1086.6835523858763" Width="2336.9467796450517" Height="544.75"/>
+			</data>
+			<data key="d7">
+				<yjs:GroupNodeStyle tabWidth="30" tabHeight="20" tabPadding="3" tabPosition="NONE" iconForegroundFill="{y:GraphMLReference 3}" iconOffset="2" minimumContentAreaSize="0,0" hitTransparentContentArea="true" tabBackgroundFill="{y:GraphMLReference 4}" contentAreaFill="{y:GraphMLReference 5}" tabFill="{y:GraphMLReference 6}" stroke="{y:GraphMLReference 7}" cssClass="y-group-node"/>
+			</data>
+			<graph id="n1:" edgedefault="directed">
+				<node id="n1::n0">
+					<data key="d0">0</data>
+					<data key="d5">
+						<y:RectD X="534.4666267559339" Y="-884.9335523858763" Width="275.1535677000453" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeExplorerView" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.009615384615384637"/>
+						</data>
+					</port>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n1">
+					<data key="d0">1</data>
+					<data key="d5">
+						<y:RectD X="61.96662675593393" Y="-895.9335523858763" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="FridgeView" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.010638297872340441"/>
+						</data>
+					</port>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n2">
+					<data key="d0">2</data>
+					<data key="d5">
+						<y:RectD X="1470.8900636240892" Y="-884.9335523858763" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserView" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="8"/>
+						</data>
+					</port>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n3">
+					<data key="d0">4</data>
+					<data key="d5">
+						<y:RectD X="528.9639762810029" Y="-741.9335523858763" Width="288.2801259654717" Height="150"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeExplorerPresenter" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ displayRecipes(recipes: List<Recipe>): void]]></sys:String>
+											<sys:String><![CDATA[+ handleFilterRequest(filters: FilterOptions): void]]></sys:String>
+											<sys:String><![CDATA[+ handleRecipeSelection(recipeId: int): void]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n4">
+					<data key="d0">5</data>
+					<data key="d5">
+						<y:RectD X="-30.185139932521594" Y="-761.6835523858763" Width="440.7190019387736" Height="182"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="FridgePresenter" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ displayFridgeContents(items: List<FridgeItem>): void]]></sys:String>
+											<sys:String><![CDATA[+ handleAddItemRequest(ingredient: Ingredient, quantity: double): void]]></sys:String>
+											<sys:String><![CDATA[+ handleRemoveItemRequest(fridgeItemId: int): void]]></sys:String>
+											<sys:String><![CDATA[+ displayExpiringItems(items: List<FridgeItem>): void]]></sys:String>
+											<sys:String><![CDATA[+ handleQuantityUpdateRequest(fridgeItemId: int, newQuantity: double): void]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+				</node>
+				<node id="n1::n5">
+					<data key="d0">6</data>
+					<data key="d5">
+						<y:RectD X="1427.3386451128724" Y="-735.4807796857028" Width="337.10283702243214" Height="134"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserPresenter" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ displayUserProfile(user: User): void]]></sys:String>
+											<sys:String><![CDATA[+ handleProfileUpdateRequest(userData: UserData): void]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n6">
+					<data key="d0">8</data>
+					<data key="d5">
+						<y:RectD X="1227.8828846658464" Y="-1058.9404588150683" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="GUI" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.512,0.5294117647058824"/>
+						</data>
+					</port>
+					<port name="p5"/>
+				</node>
+				<node id="n1::n7">
+					<data key="d0">9</data>
+					<data key="d5">
+						<y:RectD X="1869.8844502770917" Y="-908.4807796857028" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="AuthView" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="8"/>
+						</data>
+					</port>
+					<port name="p2"/>
+				</node>
+				<node id="n1::n8">
+					<data key="d0">10</data>
+					<data key="d5">
+						<y:RectD X="1793.6054941531984" Y="-762.4807796857028" Width="402.5579122477872" Height="182"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="AuthPresenter" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ handleLoginRequest(email: string, password: string): void]]></sys:String>
+											<sys:String><![CDATA[+ handleRegistrationRequest(userData: UserData): void]]></sys:String>
+											<sys:String><![CDATA[+ displayLoginResult(success: bool, errorMessage: string): void]]></sys:String>
+											<sys:String><![CDATA[+ displayRegistrationResult(success: bool, errorMessage: string): void]]></sys:String>
+											<sys:String><![CDATA[+ handleLogoutRequest(): void]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+				</node>
+				<edge id="n1::e0" source="n1::n0" target="n1::n3" sourceport="p0" targetport="p0">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e1" source="n1::n1" target="n1::n4" sourceport="p0" targetport="p0">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e2" source="n1::n2" target="n1::n5" sourceport="p0" targetport="p0">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e3" source="n1::n6" target="n1::n0" sourceport="p0" targetport="p2">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e4" source="n1::n6" target="n1::n1" sourceport="p1" targetport="p2">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e5" source="n1::n6" target="n1::n2" sourceport="p2" targetport="p2">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="9"/>
+					</data>
+				</edge>
+				<edge id="n1::e6" source="n1::n7" target="n1::n8" sourceport="p0" targetport="p0">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="13"/>
+					</data>
+				</edge>
+				<edge id="n1::e7" source="n1::n6" target="n1::n7" sourceport="p4" targetport="p2">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="13"/>
+					</data>
+				</edge>
+			</graph>
+		</node>
+		<node id="n2">
+			<data key="d0">47</data>
+			<data key="d5">
+				<y:RectD X="-1140.1556719079895" Y="-509.7264316598978" Width="4419.405671907989" Height="1764.7500000000002"/>
+			</data>
+			<data key="d7">
+				<yjs:GroupNodeStyle tabWidth="30" tabHeight="20" tabPadding="3" tabPosition="NONE" iconForegroundFill="{y:GraphMLReference 3}" iconOffset="2" minimumContentAreaSize="0,0" hitTransparentContentArea="true" tabBackgroundFill="{y:GraphMLReference 4}" contentAreaFill="{y:GraphMLReference 5}" tabFill="{y:GraphMLReference 6}" stroke="{y:GraphMLReference 7}" cssClass="y-group-node"/>
+			</data>
+			<graph id="n2:" edgedefault="directed">
+				<node id="n2::n0">
+					<data key="d0">0</data>
+					<data key="d5">
+						<y:RectD X="363.12026182800196" Y="-281.9073206732627" Width="523.7751459169867" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IRecipeExplorerProcessor" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+searchRecipes(criteria: SearchCriteria): List<Recipe>]]></sys:String>
+											<sys:String><![CDATA[+getFilteredRecipes(filterDTO: RecipeFilterDTO): List<Recipe>]]></sys:String>
+											<sys:String><![CDATA[+getSortedRecipesByAvailability(userId: int, recipes: List<Recipe>): List<SortedRecipeDTO>]]></sys:String>
+											<sys:String></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+				</node>
+				<node id="n2::n1">
+					<data key="d0">1</data>
+					<data key="d5">
+						<y:RectD X="-248.07511563164087" Y="-289.9073206732627" Width="538.4877137270809" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IFridgeProcessor" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ addItem(fridgeId: int, ingredientId: int, quantity: double, expirationDate: DateTime): FridgeItem]]></sys:String>
+											<sys:String><![CDATA[+ removeItemFromFridge(fridgeItemId: int): bool]]></sys:String>
+											<sys:String><![CDATA[+ updateItemQuantity(fridgeItemId: int, newQuantity: double): bool]]></sys:String>
+											<sys:String><![CDATA[+ getExpiringItems(fridgeId: int, daysThreshold: int): List<FridgeItem>]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.010638297872340441"/>
+						</data>
+					</port>
+					<port name="p1">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.010638297872340441"/>
+						</data>
+					</port>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+				</node>
+				<node id="n2::n2">
+					<data key="d0">2</data>
+					<data key="d5">
+						<y:RectD X="1397.2882547154404" Y="-273.13441388850276" Width="397.20361781729804" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IUserProcessor" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ updateUserProfile(userId: int, userData: UserProfileDTO): bool]]></sys:String>
+											<sys:String><![CDATA[+ getUserById(userId: int): User]]></sys:String>
+											<sys:String><![CDATA[+ changePassword(userId: int, old: string, new: string): bool]]></sys:String>
+											<sys:String><![CDATA[+ deleteUser(userId: int): bool]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="23"/>
+						</data>
+					</port>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0025049873181702265,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n3">
+					<data key="d0">4</data>
+					<data key="d5">
+						<y:RectD X="488.2377001332429" Y="-72.72014820257374" Width="273.5402693065047" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeExplorerProcessor" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11"/>
+					<port name="p12"/>
+					<port name="p13">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.9903846153846154"/>
+						</data>
+					</port>
+					<port name="p14"/>
+					<port name="p15"/>
+					<port name="p16"/>
+					<port name="p17"/>
+					<port name="p18">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003629233587224112,0.5"/>
+						</data>
+					</port>
+					<port name="p19"/>
+					<port name="p20">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003629233587224112,0.5"/>
+						</data>
+					</port>
+					<port name="p21"/>
+					<port name="p22"/>
+					<port name="p23"/>
+					<port name="p24"/>
+					<port name="p25"/>
+				</node>
+				<node id="n2::n4">
+					<data key="d0">5</data>
+					<data key="d5">
+						<y:RectD X="40.41259809543999" Y="-440.9764316598978" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="FridgeProcessor" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9"/>
+				</node>
+				<node id="n2::n5">
+					<data key="d0">6</data>
+					<data key="d5">
+						<y:RectD X="1487.932301480556" Y="87.15846242205998" Width="250" Height="150"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserProcessor" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- IUserRepository userRepository]]></sys:String>
+											<sys:String><![CDATA[- IPasswordHasher passwordHasher]]></sys:String>
+											<sys:String><![CDATA[- IAuthProcessor authProcessor]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="16"/>
+						</data>
+					</port>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p10"/>
+					<port name="p11"/>
+				</node>
+				<node id="n2::n6">
+					<data key="d0">8</data>
+					<data key="d5">
+						<y:RectD X="968.7507885076766" Y="886.1485683401022" Width="354.4984229846464" Height="230"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IRecipeRepository" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ getRecipeById(recipeId: int): Recipe]]></sys:String>
+											<sys:String><![CDATA[+ getAllRecipes(): List<Recipe>]]></sys:String>
+											<sys:String><![CDATA[+ getRecipesByAuthor(authorId: int): List<Recipe>]]></sys:String>
+											<sys:String><![CDATA[+ saveRecipe(recipe: Recipe): int]]></sys:String>
+											<sys:String><![CDATA[+ updateRecipe(recipe: Recipe): bool]]></sys:String>
+											<sys:String><![CDATA[+ deleteRecipe(recipeId: int): bool]]></sys:String>
+											<sys:String><![CDATA[+ searchRecipes(keywords: string): List<Recipe>]]></sys:String>
+											<sys:String><![CDATA[+ getRecipeIngredients(recipeId: int): List<RecipeIngredient>]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+				</node>
+				<node id="n2::n7">
+					<data key="d0">9</data>
+					<data key="d5">
+						<y:RectD X="573.8112493654139" Y="886.1485683401022" Width="289.63044144684505" Height="230"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IFridgeRepository" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ getFridgeById(fridgeId: int): Fridge]]></sys:String>
+											<sys:String><![CDATA[+ getFridgeByUserId(userId: int): Fridge]]></sys:String>
+											<sys:String><![CDATA[+ saveFridge(fridge: Fridge): int]]></sys:String>
+											<sys:String><![CDATA[+ updateFridge(fridge: Fridge): bool]]></sys:String>
+											<sys:String><![CDATA[+ getFridgeItems(fridgeId: int): List<FridgeItem>]]></sys:String>
+											<sys:String><![CDATA[+ addFridgeItem(fridgeItem: FridgeItem): int]]></sys:String>
+											<sys:String><![CDATA[+ updateFridgeItem(fridgeItem: FridgeItem): bool]]></sys:String>
+											<sys:String><![CDATA[+ removeFridgeItem(fridgeItemId: int): bool]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.009615384615384637"/>
+						</data>
+					</port>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004310344827586243"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.10077929132301862,0.04935405069520782"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n8">
+					<data key="d0">10</data>
+					<data key="d5">
+						<y:RectD X="1622.0939087177667" Y="894.1485683401022" Width="354.4338426790155" Height="214"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IUserRepository" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ getUserById(userId: int): User]]></sys:String>
+											<sys:String><![CDATA[+ getUserByEmail(email: string): User]]></sys:String>
+											<sys:String><![CDATA[+ updateUser(user: User): bool]]></sys:String>
+											<sys:String><![CDATA[+ deleteUser(userId: int): bool]]></sys:String>
+											<sys:String><![CDATA[+ getUsersByUsername(username: string): List<User>]]></sys:String>
+											<sys:String><![CDATA[+ verifyCredentials(email: string, passwordHash: string): bool]]></sys:String>
+											<sys:String><![CDATA[+ saveRecipe(recipe: Recipe): int]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004629629629629595"/>
+						</data>
+					</port>
+					<port name="p5"/>
+					<port name="p6">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004629629629629595"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n9">
+					<data key="d0">12</data>
+					<data key="d5">
+						<y:RectD X="1806.9853592925483" Y="-273.1572726928888" Width="375.7981819690924" Height="198"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IAuthProcessor" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ login(email: string, password: string): User]]></sys:String>
+											<sys:String><![CDATA[+ register(username: string, email: string, password: string): User]]></sys:String>
+											<sys:String><![CDATA[+ logout(userId: int): bool]]></sys:String>
+											<sys:String><![CDATA[+ getCurrentUser(): User]]></sys:String>
+											<sys:String><![CDATA[+ isUserLoggedIn(): bool]]></sys:String>
+											<sys:String><![CDATA[+ getUserId(): int]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.9950000000000001"/>
+						</data>
+					</port>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.8701868619852663,0.0310973368327717"/>
+						</data>
+					</port>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.002646915860706589,0.5"/>
+						</data>
+					</port>
+					<port name="p10">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.36725734005494376,0.1220064277418626"/>
+						</data>
+					</port>
+					<port name="p11">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004999999999999949"/>
+						</data>
+					</port>
+					<port name="p12">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004999999999999949"/>
+						</data>
+					</port>
+					<port name="p13">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.004999999999999949"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n10">
+					<data key="d0">13</data>
+					<data key="d5">
+						<y:RectD X="1869.8844502770935" Y="87.15846242205998" Width="250" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="AuthProcessor" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- IUserRepository userRepository]]></sys:String>
+											<sys:String><![CDATA[- IPasswordHasher passwordHasher]]></sys:String>
+											<sys:String><![CDATA[- User currentUser]]></sys:String>
+											<sys:String><![CDATA[- bool isLoggedIn]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="16"/>
+						</data>
+					</port>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p10">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p11"/>
+				</node>
+				<node id="n2::n11">
+					<data key="d0">14</data>
+					<data key="d5">
+						<y:RectD X="-672.6556719079894" Y="-480.9764316598978" Width="444.71123901413836" Height="182"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IIngredientService" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ convertUnit(quantity: double, fromUnit: string, toUnit: string): double]]></sys:String>
+											<sys:String><![CDATA[+ findSubstitutes(ingredientId: int): List<Ingredient>]]></sys:String>
+											<sys:String><![CDATA[+ calculateNutrition(ingredientId: int, quantity: double): NutritionInfo]]></sys:String>
+											<sys:String><![CDATA[+ compareIngredients(ingredient1Id: int, ingredient2Id: int): ComparisonResult]]></sys:String>
+											<sys:String><![CDATA[+ determineRecipeCategory(ingredients: List<Ingredients>): Category]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="17"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="18"/>
+						</data>
+					</port>
+					<port name="p7">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="19"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="20"/>
+						</data>
+					</port>
+					<port name="p9"/>
+					<port name="p10">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.6535829239493288,0.7910792948346033"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n12">
+					<data key="d0">32</data>
+					<data key="d5">
+						<y:RectD X="-310.91706317570146" Y="915.1485683401025" Width="250" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="IngredientService" attributesOpen="false" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.9893617021276595"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+				</node>
+				<node id="n2::n13">
+					<data key="d0">16</data>
+					<data key="d5">
+						<y:RectD X="186.0497411565887" Y="902.6485683401022" Width="362.50638088287803" Height="214"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IIngredientRepository" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ getIngredientById(ingredientId: int): Ingredient]]></sys:String>
+											<sys:String><![CDATA[+ getAllIngredients(): List<Ingredient>]]></sys:String>
+											<sys:String><![CDATA[+ getIngredientsByCategory(category: string): List<Ingredient>]]></sys:String>
+											<sys:String><![CDATA[+ saveIngredient(ingredient: Ingredient): int]]></sys:String>
+											<sys:String><![CDATA[+ updateIngredient(ingredient: Ingredient): bool]]></sys:String>
+											<sys:String><![CDATA[+ deleteIngredient(ingredientId: int): bool]]></sys:String>
+											<sys:String><![CDATA[+ searchIngredients(keyword: string): List<Ingredient>??]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.508,0.47794117647058826"/>
+						</data>
+					</port>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0027434361987789813,0.5"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0,0.29837117598083085" Offset="-2.549741156588709,0"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n14">
+					<data key="d0">17</data>
+					<data key="d5">
+						<y:RectD X="2316.375" Y="809.9059761060894" Width="250" Height="182"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeIngredient" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- recipeId: int]]></sys:String>
+											<sys:String><![CDATA[- ingredientId: int]]></sys:String>
+											<sys:String><![CDATA[- quantity: double]]></sys:String>
+											<sys:String><![CDATA[- unit: string]]></sys:String>
+											<sys:String><![CDATA[- isOptional: bool]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n15">
+					<data key="d0">18</data>
+					<data key="d5">
+						<y:RectD X="2318.625" Y="538.5309761060893" Width="250" Height="214"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="Recipe" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- recipeId: int]]></sys:String>
+											<sys:String><![CDATA[- name: string]]></sys:String>
+											<sys:String><![CDATA[- description: string]]></sys:String>
+											<sys:String><![CDATA[- preparationTime: int]]></sys:String>
+											<sys:String><![CDATA[- cookingTime: int]]></sys:String>
+											<sys:String><![CDATA[- dietType: string]]></sys:String>
+											<sys:String><![CDATA[- authorId: int]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p4"/>
+					<port name="p5"/>
+				</node>
+				<node id="n2::n16">
+					<data key="d0">19</data>
+					<data key="d5">
+						<y:RectD X="2936.5" Y="926.9059761060894" Width="250" Height="198"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="Ingredient" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- ingredientId: int]]></sys:String>
+											<sys:String><![CDATA[- name: string]]></sys:String>
+											<sys:String><![CDATA[- category: string]]></sys:String>
+											<sys:String><![CDATA[- defaultUnit: string]]></sys:String>
+											<sys:String><![CDATA[- calories: double]]></sys:String>
+											<sys:String><![CDATA[- defaultExpirationDays: int]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p6"/>
+					<port name="p7">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11"/>
+				</node>
+				<node id="n2::n17">
+					<data key="d0">21</data>
+					<data key="d5">
+						<y:RectD X="2652.875" Y="443.5" Width="250" Height="134"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="Fridge" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- fridgeId: int]]></sys:String>
+											<sys:String><![CDATA[- userId: int]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p4"/>
+				</node>
+				<node id="n2::n18">
+					<data key="d0">22</data>
+					<data key="d5">
+						<y:RectD X="2318.75" Y="303.7809761060894" Width="250" Height="182"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="User" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- userId: int]]></sys:String>
+											<sys:String><![CDATA[- username: string ]]></sys:String>
+											<sys:String><![CDATA[- email: string]]></sys:String>
+											<sys:String><![CDATA[- passwordHash: string]]></sys:String>
+											<sys:String><![CDATA[- registrationDate: DateTime]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.1465,0.8276098901098901"/>
+						</data>
+					</port>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.2595,0.3317307692307692"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p7">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.9945652173913043"/>
+						</data>
+					</port>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p10">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p11">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p12">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p13"/>
+					<port name="p14"/>
+				</node>
+				<node id="n2::n19">
+					<data key="d0">23</data>
+					<data key="d5">
+						<y:RectD X="2652.875" Y="680.9059761060894" Width="250" Height="214"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="FridgeItem" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- fridgeItemId: int]]></sys:String>
+											<sys:String><![CDATA[- fridgeId: int]]></sys:String>
+											<sys:String><![CDATA[- ingredientId: int]]></sys:String>
+											<sys:String><![CDATA[- quantity: double]]></sys:String>
+											<sys:String><![CDATA[- unit: string]]></sys:String>
+											<sys:String><![CDATA[- purchaseDate: DateTime]]></sys:String>
+											<sys:String><![CDATA[- expirationDate: DateTime]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n20">
+					<data key="d0">24</data>
+					<data key="d5">
+						<y:RectD X="2936.5" Y="712.9059761060894" Width="250" Height="150"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}">
+							<uml:UMLNodeStyle.highlightFill>
+								<yjs:CssFill cssString="#a3f1bb"/>
+							</uml:UMLNodeStyle.highlightFill>
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="Category" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- categoryId: int]]></sys:String>
+											<sys:String><![CDATA[- name: string]]></sys:String>
+											<sys:String><![CDATA[- description: string]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+				</node>
+				<node id="n2::n21">
+					<data key="d0">25</data>
+					<data key="d5">
+						<y:RectD X="-355.30122431885" Y="117.7815580707285" Width="455.46382241429" Height="134"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IRecipeFilterService" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[+ FilterRecipes(filters: RecipeFiltersDTO, recipes: List<Recipe>): List<Recipes>]]></sys:String>
+											<sys:String></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="17"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="18"/>
+						</data>
+					</port>
+					<port name="p7">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="19"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="20"/>
+						</data>
+					</port>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="21"/>
+						</data>
+					</port>
+					<port name="p12"/>
+					<port name="p13"/>
+					<port name="p14"/>
+					<port name="p15"/>
+				</node>
+				<node id="n2::n22">
+					<data key="d0">26</data>
+					<data key="d5">
+						<y:RectD X="298.9780714775509" Y="247.22043681471973" Width="250" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeFiltersDTO" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- lactoseFree: bool]]></sys:String>
+											<sys:String><![CDATA[- vegan: bool]]></sys:String>
+											<sys:String><![CDATA[- int maxCookingTime]]></sys:String>
+											<sys:String><![CDATA[- bool lowCalories]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="22"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.16908771408979648,0.08150339268241125"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n23">
+					<data key="d0">27</data>
+					<data key="d5">
+						<y:RectD X="581.7365829739927" Y="63.250144306073" Width="617.123042238015" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IRecipeSortingService" attributesOpen="false" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array>
+											<sys:String><![CDATA[ +sortRecipesByAvailability(userId: int, recipes: List<Recipe>): List<SortedRecipeDTO>]]></sys:String>
+											<sys:String><![CDATA[+calculateMissingRecipeIngredients(recipe: Recipe, fridgeItems: List<FridgeItem>): List<mii> ]]></sys:String>
+											<sys:String><![CDATA[+detectPossibleSubstitutions(missingIngs: List<RecIngredient>, avaliableIngs: List<FridgeItem>): Map<RI: FI>]]></sys:String>
+											<sys:String><![CDATA[+checkRequiredEquipment(recipe: Recipe, userEquipment: List<KitchenEquipment>): List<REI>]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="17"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="18"/>
+						</data>
+					</port>
+					<port name="p7">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="19"/>
+						</data>
+					</port>
+					<port name="p8">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="20"/>
+						</data>
+					</port>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="21"/>
+						</data>
+					</port>
+					<port name="p12"/>
+					<port name="p13"/>
+					<port name="p14"/>
+					<port name="p15"/>
+					<port name="p16">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0016151878250004192,0.5"/>
+						</data>
+					</port>
+					<port name="p17">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0016151878250003637,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n24">
+					<data key="d0">28</data>
+					<data key="d5">
+						<y:RectD X="-322.6871978289538" Y="279.2204368147198" Width="273.5402693065047" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeFilterService" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11"/>
+					<port name="p12"/>
+					<port name="p13"/>
+				</node>
+				<node id="n2::n25">
+					<data key="d0">29</data>
+					<data key="d5">
+						<y:RectD X="701.4044395285841" Y="263.22043681471973" Width="273.5402693065047" Height="102"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="RecipeSortingService" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array/>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9"/>
+					<port name="p10"/>
+					<port name="p11"/>
+					<port name="p12"/>
+					<port name="p13"/>
+					<port name="p14"/>
+					<port name="p15"/>
+					<port name="p16"/>
+					<port name="p17"/>
+				</node>
+				<node id="n2::n26">
+					<data key="d0">30</data>
+					<data key="d5">
+						<y:RectD X="733.4679016803177" Y="392.87570646040444" Width="336.7681936205266" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="SortedRecipesDTO" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- Recipe: recipe]]></sys:String>
+											<sys:String><![CDATA[- List<MissingIngredientsInfo> msi]]></sys:String>
+											<sys:String><![CDATA[- Map<RecipeIngredient, FridgeItem> possibleSubstitutes]]></sys:String>
+											<sys:String><![CDATA[- double avaliabilityScore]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="22"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+					<port name="p5">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.9970481290191007,0.5"/>
+						</data>
+					</port>
+					<port name="p6">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.005952380952380931"/>
+						</data>
+					</port>
+					<port name="p7"/>
+					<port name="p8"/>
+					<port name="p9">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0029518709808990518,0.5"/>
+						</data>
+					</port>
+					<port name="p10">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.0029518709808990518,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n27">
+					<data key="d0">31</data>
+					<data key="d5">
+						<y:RectD X="701.4044395285841" Y="586.5309761060893" Width="250" Height="166"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="MissingIngredientInfo" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[- RecipeIngredient: recipeIngredient]]></sys:String>
+											<sys:String><![CDATA[- double: avaliableQuantity]]></sys:String>
+											<sys:String><![CDATA[- double: missingQuantity]]></sys:String>
+											<sys:String><![CDATA[- string: unit]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="22"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.996031746031746,0.5"/>
+						</data>
+					</port>
+					<port name="p3"/>
+					<port name="p4">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.003968253968253954,0.5"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n28">
+					<data key="d0">33</data>
+					<data key="d5">
+						<y:RectD X="2008.25" Y="-482.92043652956954" Width="148.25" Height="150"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserRegistrationDTO" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[+ string username]]></sys:String>
+											<sys:String><![CDATA[+ string email]]></sys:String>
+											<sys:String><![CDATA[+ string password]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.29,0.07613624353046361"/>
+						</data>
+					</port>
+					<port name="p1">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.006578947368421073"/>
+						</data>
+					</port>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.993421052631579"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n29">
+					<data key="d0">34</data>
+					<data key="d5">
+						<y:RectD X="1607.5982541646717" Y="-434.2550740059787" Width="250" Height="134"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="UserProfileDTO" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[+ string username]]></sys:String>
+											<sys:String><![CDATA[+ string email]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.007352941176470562"/>
+						</data>
+					</port>
+					<port name="p1">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.9926470588235294"/>
+						</data>
+					</port>
+				</node>
+				<node id="n2::n30">
+					<data key="d0">35</data>
+					<data key="d5">
+						<y:RectD X="2251.836599073631" Y="-209.1572726928888" Width="294.9612521298321" Height="134"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 14}" highlightFill="{y:GraphMLReference 15}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="interface" constraint="" className="IPasswordHasher" attributesOpen="true" operationsOpen="true">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[+ hashPassword(psswd: string): string]]></sys:String>
+											<sys:String><![CDATA[+verifyPassword(psswd: string, hash: string): bool]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0"/>
+					<port name="p1"/>
+					<port name="p2"/>
+					<port name="p3">
+						<data key="d16">
+							<y:GraphMLReference ResourceKey="23"/>
+						</data>
+					</port>
+					<port name="p4"/>
+					<port name="p5"/>
+					<port name="p6"/>
+				</node>
+				<node id="n2::n31">
+					<data key="d0">36</data>
+					<data key="d5">
+						<y:RectD X="2174.0478512034642" Y="-482.92043652956954" Width="148.25" Height="150"/>
+					</data>
+					<data key="d7">
+						<uml:UMLNodeStyle fill="{y:GraphMLReference 1}" highlightFill="{y:GraphMLReference 2}">
+							<uml:UMLNodeStyle.model>
+								<uml:UMLClassModel stereotype="" constraint="" className="AuthResult" attributesOpen="true" operationsOpen="false">
+									<uml:UMLClassModel.attributes>
+										<x:Array>
+											<sys:String><![CDATA[+ bool success]]></sys:String>
+											<sys:String><![CDATA[+ string errorMessage]]></sys:String>
+											<sys:String><![CDATA[+ User user]]></sys:String>
+										</x:Array>
+									</uml:UMLClassModel.attributes>
+									<uml:UMLClassModel.operations>
+										<x:Array/>
+									</uml:UMLClassModel.operations>
+								</uml:UMLClassModel>
+							</uml:UMLNodeStyle.model>
+						</uml:UMLNodeStyle>
+					</data>
+					<port name="p0">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.006578947368421073"/>
+						</data>
+					</port>
+					<port name="p1"/>
+					<port name="p2">
+						<data key="d16">
+							<y:FreeNodePortLocationModelParameter Ratio="0.5,0.006578947368421073"/>
+						</data>
+					</port>
+				</node>
+				<edge id="n2::e0" source="n2::n2" target="n2::n5" sourceport="p2" targetport="p2">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1562.8493614289541,-257.5"/>
+							<y:Bend Location="1726.6021893718466,-248.25"/>
+							<y:Bend Location="1610.3521893718466,-180.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="24"/>
+					</data>
+				</edge>
+				<edge id="n2::e1" source="n2::n1" target="n2::n4" sourceport="p2" targetport="p2">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="144.875,-263.875"/>
+							<y:Bend Location="165.41259809544,-253.625"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="24"/>
+					</data>
+				</edge>
+				<edge id="n2::e2" source="n2::n9" target="n2::n10" sourceport="p2" targetport="p2">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1930.2756319400464,-242"/>
+							<y:Bend Location="1955.0050424714586,-253.75"/>
+							<y:Bend Location="2150.257870414351,-245.25"/>
+							<y:Bend Location="1994.884450277094,-173.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 25}" targetArrow="{y:GraphMLReference 12}" sourceArrow="{y:GraphMLReference 26}"/>
+					</data>
+				</edge>
+				<edge id="n2::e3" source="n2::n11" target="n2::n12" sourceport="p1" targetport="p1">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="-450.3000524009202,812.3318720979429"/>
+							<y:Bend Location="-450.3000524009202,966.1485683401025"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="41"/>
+					</data>
+				</edge>
+				<edge id="n2::e4" source="n2::n3" target="n2::n11" sourceport="p9" targetport="p3">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="-305,-21.72014820257374"/>
+							<y:Bend Location="-305,-315.5"/>
+							<y:Bend Location="-242,-453.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="28"/>
+					</data>
+				</edge>
+				<edge id="n2::e5" source="n2::n4" target="n2::n11" sourceport="p6" targetport="p8">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="-267.625,-389.9764316598978"/>
+							<y:Bend Location="-228.9399557286818,-347.3293111182943"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="28"/>
+					</data>
+				</edge>
+				<edge id="n2::e6" source="n2::n18" target="n2::n15" sourceport="p0" targetport="p2">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="33"/>
+					</data>
+				</edge>
+				<edge id="n2::e7" source="n2::n18" target="n2::n17" sourceport="p1" targetport="p0">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="2550.0000000000005,460.75"/>
+							<y:Bend Location="2670.2500000000005,460.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}" sourceArrow="{y:GraphMLReference 35}"/>
+					</data>
+				</edge>
+				<edge id="n2::e8" source="n2::n15" target="n2::n14" sourceport="p1" targetport="p0">
+					<data key="d11">
+						<x:List>
+							<y:Label Text="1..n" Style="{y:GraphMLReference 32}">
+								<y:Label.LayoutParameter>
+									<yx:FreeEdgeLabelModelParameter Ratio="0.5909469816525548" Distance="-10.74917455088043" Angle="1.5796066715156711"/>
+								</y:Label.LayoutParameter>
+							</y:Label>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}">
+							<yjs:PolylineEdgeStyle.sourceArrow>
+								<yjs:Arrow fill="{y:GraphMLReference 30}" cropLength="1" type="DIAMOND">
+									<yjs:Arrow.stroke>
+										<yjs:Stroke fill="{y:GraphMLReference 30}"/>
+									</yjs:Arrow.stroke>
+								</yjs:Arrow>
+							</yjs:PolylineEdgeStyle.sourceArrow>
+						</yjs:PolylineEdgeStyle>
+					</data>
+				</edge>
+				<edge id="n2::e9" source="n2::n17" target="n2::n19" sourceport="p2" targetport="p2">
+					<data key="d11">
+						<x:List>
+							<y:Label Text="0..n" Style="{y:GraphMLReference 32}">
+								<y:Label.LayoutParameter>
+									<yx:FreeEdgeLabelModelParameter Ratio="0.5643616365698504" Distance="-9.925533053310856" Angle="1.5622418303842063"/>
+								</y:Label.LayoutParameter>
+							</y:Label>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}">
+							<yjs:PolylineEdgeStyle.sourceArrow>
+								<yjs:Arrow stroke="{y:GraphMLReference 31}" fill="WHITE" type="DIAMOND"/>
+							</yjs:PolylineEdgeStyle.sourceArrow>
+						</yjs:PolylineEdgeStyle>
+					</data>
+				</edge>
+				<edge id="n2::e10" source="n2::n16" target="n2::n14" sourceport="p6" targetport="p3">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="2747.5,1025.9059761060894"/>
+							<y:Bend Location="2747.5,950.75"/>
+							<y:Bend Location="2441.375,950.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}">
+							<yjs:PolylineEdgeStyle.sourceArrow>
+								<yjs:Arrow fill="{y:GraphMLReference 30}" cropLength="1" type="DIAMOND">
+									<yjs:Arrow.stroke>
+										<yjs:Stroke fill="{y:GraphMLReference 30}"/>
+									</yjs:Arrow.stroke>
+								</yjs:Arrow>
+							</yjs:PolylineEdgeStyle.sourceArrow>
+						</yjs:PolylineEdgeStyle>
+					</data>
+				</edge>
+				<edge id="n2::e11" source="n2::n16" target="n2::n19" sourceport="p3" targetport="p4">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="3061.5,966.5"/>
+							<y:Bend Location="2842.625,966.5"/>
+							<y:Bend Location="2842.625,787.9059761060894"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}">
+							<yjs:PolylineEdgeStyle.sourceArrow>
+								<yjs:Arrow fill="{y:GraphMLReference 30}" cropLength="1" type="DIAMOND">
+									<yjs:Arrow.stroke>
+										<yjs:Stroke fill="{y:GraphMLReference 30}"/>
+									</yjs:Arrow.stroke>
+								</yjs:Arrow>
+							</yjs:PolylineEdgeStyle.sourceArrow>
+						</yjs:PolylineEdgeStyle>
+					</data>
+				</edge>
+				<edge id="n2::e12" source="n2::n16" target="n2::n20" sourceport="p9" targetport="p1">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="33"/>
+					</data>
+				</edge>
+				<edge id="n2::e13" source="n2::n20" target="n2::n11" sourceport="p3" targetport="p9">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="3219.75,787.9059761060894"/>
+							<y:Bend Location="3219.75,1212"/>
+							<y:Bend Location="-529.5,1212"/>
+							<y:Bend Location="-529.5,735"/>
+							<y:Bend Location="-529.5,-308.25"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="28"/>
+					</data>
+				</edge>
+				<edge id="n2::e14" source="n2::n0" target="n2::n3" sourceport="p4" targetport="p13">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="34"/>
+					</data>
+				</edge>
+				<edge id="n2::e15" source="n2::n21" target="n2::n24" sourceport="p13" targetport="p13">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="-185.91706317570146,120.7815580707285"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="34"/>
+					</data>
+				</edge>
+				<edge id="n2::e16" source="n2::n26" target="n2::n27" sourceport="p3" targetport="p3">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="826.4044395285841,451.25"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 31}" targetArrow="{y:GraphMLReference 27}" sourceArrow="{y:GraphMLReference 35}"/>
+					</data>
+				</edge>
+				<edge id="n2::e17" source="n2::n23" target="n2::n25" sourceport="p13" targetport="p13">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="774.2981040930001,154.25"/>
+							<y:Bend Location="838.1745741818365,132.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="34"/>
+					</data>
+				</edge>
+				<edge id="n2::e18" source="n2::n25" target="n2::n27" sourceport="p15" targetport="p4">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="878.1264700888364,352.4371724706889"/>
+							<y:Bend Location="718.6264700888364,352.4371724706889"/>
+							<y:Bend Location="718.6264700888364,678.25"/>
+							<y:Bend Location="878.1264700888364,669.5309761060895"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e19" source="n2::n3" target="n2::n22" sourceport="p20" targetport="p8">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="552.1054416660684,19.5"/>
+							<y:Bend Location="552.1054416660684,123"/>
+							<y:Bend Location="423.9780714775509,123"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e20" source="n2::n25" target="n2::n11" sourceport="p16" targetport="p10">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="666,314.22043681471973"/>
+							<y:Bend Location="666,629.6871724706889"/>
+							<y:Bend Location="-382,629.6871724706889"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e21" source="n2::n0" target="n2::n6" sourceport="p5" targetport="p2">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="836,-122.5"/>
+							<y:Bend Location="836,-68.98833642180256"/>
+							<y:Bend Location="1287.75,-68.98833642180256"/>
+							<y:Bend Location="1287.75,801"/>
+							<y:Bend Location="1287.75,925.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e22" source="n2::n23" target="n2::n7" sourceport="p16" targetport="p5">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="631.625,199.25"/>
+							<y:Bend Location="631.625,947.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e23" source="n2::n9" target="n2::n28" sourceport="p6" targetport="p3">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="2133.2500000000005,-248.5"/>
+							<y:Bend Location="2082.3750000000005,-248.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e24" source="n2::n2" target="n2::n29" sourceport="p4" targetport="p1">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1732.5982541646713,-255"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e25" source="n2::n30" target="n2::n10" sourceport="p6" targetport="p10">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="2399.3172251385477,170.15846242205987"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e26" source="n2::n9" target="n2::n31" sourceport="p7" targetport="p1">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="2121.9630208209514,-243.25"/>
+							<y:Bend Location="2121.9630208209514,-301.23584323674794"/>
+							<y:Bend Location="2248.172851203464,-301.23584323674794"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e27" source="n2::n10" target="n2::n8" sourceport="p11" targetport="p5">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1994.884450277094,842.75"/>
+							<y:Bend Location="1799.3108300572749,842.75"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e28" source="n2::n5" target="n2::n9" sourceport="p10" targetport="p9">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1697.0000000000005,162.15846242205987"/>
+							<y:Bend Location="1827.7500000000005,162.15846242205987"/>
+							<y:Bend Location="1827.7500000000005,-112"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e29" source="n2::n5" target="n2::n8" sourceport="p11" targetport="p6">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1612.9323014805564,842.8125"/>
+							<y:Bend Location="1732.5982541646713,842.8125"/>
+							<y:Bend Location="1732.5982541646713,925"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e30" source="n2::n1" target="n2::n13" sourceport="p3" targetport="p5">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="241,-153"/>
+							<y:Bend Location="241,742"/>
+							<y:Bend Location="241,921"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e31" source="n2::n1" target="n2::n7" sourceport="p4" targetport="p6">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="273.23452432722246,-133.5"/>
+							<y:Bend Location="273.23452432722246,45.15846242205987"/>
+							<y:Bend Location="273.23452432722246,810.895106540872"/>
+							<y:Bend Location="603,810.895106540872"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e32" source="n2::n12" target="n2::n13" sourceport="p5" targetport="p6">
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e33" source="n2::n16" target="n2::n12" sourceport="p11" targetport="p6">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="3061.5000000000005,1178.5"/>
+							<y:Bend Location="-185.91706317570146,1178.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 29}" targetArrow="{y:GraphMLReference 37}" sourceArrow="{y:GraphMLReference 27}"/>
+					</data>
+				</edge>
+				<edge id="n2::e34" source="n2::n2" target="n2::n18" sourceport="p5" targetport="p14">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1711.5000000000005,-158"/>
+							<y:Bend Location="1713.3750000000005,-43.25"/>
+							<y:Bend Location="2443.5000000000005,-43.25"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e35" source="n2::n1" target="n2::n9" sourceport="p5" targetport="p10">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="321.5,-206.9073206732627"/>
+							<y:Bend Location="321.5,-492.5"/>
+							<y:Bend Location="1945.0000000000005,-492.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle targetArrow="{y:GraphMLReference 37}" sourceArrow="{y:GraphMLReference 27}">
+							<yjs:PolylineEdgeStyle.stroke>
+								<yjs:Stroke fill="{y:GraphMLReference 38}" lineCap="SQUARE" dashStyle="Dash"/>
+							</yjs:PolylineEdgeStyle.stroke>
+						</yjs:PolylineEdgeStyle>
+					</data>
+				</edge>
+				<edge id="n2::e36" source="n2::n1" target="n2::n17" sourceport="p6" targetport="p4">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="21.16874123189956,-94.5"/>
+							<y:Bend Location="1322,-95"/>
+							<y:Bend Location="1322,510.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e37" source="n2::n2" target="n2::n9" sourceport="p6" targetport="p12">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1552.7500000000005,-264.875"/>
+							<y:Bend Location="1552.7500000000005,-469.375"/>
+							<y:Bend Location="1915.1250000000005,-469.375"/>
+							<y:Bend Location="1915.1250000000005,-237.625"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<yjs:PolylineEdgeStyle stroke="{y:GraphMLReference 39}" targetArrow="{y:GraphMLReference 37}" sourceArrow="{y:GraphMLReference 27}"/>
+					</data>
+				</edge>
+				<edge id="n2::e38" source="n2::n3" target="n2::n26" sourceport="p22" targetport="p9">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="569.2578347864953,-3.5"/>
+							<y:Bend Location="569.2578347864953,475.87570646040444"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e39" source="n2::n25" target="n2::n26" sourceport="p17" targetport="p10">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="838.1745741818365,469.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="36"/>
+					</data>
+				</edge>
+				<edge id="n2::e40" source="n2::n3" target="n2::n2" sourceport="p23" targetport="p7">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="1476.890821173783,-21.72014820257374"/>
+							<y:Bend Location="1476.890821173783,-134.25"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="40"/>
+					</data>
+				</edge>
+				<edge id="n2::e41" source="n2::n0" target="n2::n9" sourceport="p7" targetport="p13">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="809.75,-228.25"/>
+							<y:Bend Location="809.75,-446.5"/>
+							<y:Bend Location="1898,-446.5"/>
+							<y:Bend Location="1898,-164"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="40"/>
+					</data>
+				</edge>
+				<edge id="n2::e42" source="n2::n3" target="n2::n23" sourceport="p24" targetport="p17">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="684,-21.72014820257374"/>
+							<y:Bend Location="684,146.250144306073"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="40"/>
+					</data>
+				</edge>
+				<edge id="n2::e43" source="n2::n3" target="n2::n21" sourceport="p25" targetport="p15">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="625.0078347864953,7.5"/>
+							<y:Bend Location="-127.56931311170501,7.5"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="40"/>
+					</data>
+				</edge>
+				<edge id="n2::e44" source="n2::n0" target="n2::n15" sourceport="p8" targetport="p5">
+					<data key="d12">
+						<x:List>
+							<y:Bend Location="811,-198.9073206732627"/>
+							<y:Bend Location="811,7"/>
+							<y:Bend Location="1251,7"/>
+							<y:Bend Location="1251,645.5309761060893"/>
+						</x:List>
+					</data>
+					<data key="d13">
+						<y:GraphMLReference ResourceKey="40"/>
+					</data>
+				</edge>
+			</graph>
+		</node>
+		<edge id="e0" source="n1::n5" target="n2::n2" sourceport="p1" targetport="p0">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="9"/>
+			</data>
+		</edge>
+		<edge id="e1" source="n1::n4" target="n2::n1" sourceport="p1" targetport="p0">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="21.16874123189956,-622.75"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="9"/>
+			</data>
+		</edge>
+		<edge id="e2" source="n1::n3" target="n2::n0" sourceport="p1" targetport="p0">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="673.1040392637387,-259"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="9"/>
+			</data>
+		</edge>
+		<edge id="e3" source="n2::n8" target="n0::n2" sourceport="p1" targetport="p1">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="24"/>
+			</data>
+		</edge>
+		<edge id="e4" source="n2::n7" target="n0::n1" sourceport="p0" targetport="p0">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="24"/>
+			</data>
+		</edge>
+		<edge id="e5" source="n2::n6" target="n0::n0" sourceport="p0" targetport="p0">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="24"/>
+			</data>
+		</edge>
+		<edge id="e6" source="n1::n8" target="n2::n9" sourceport="p1" targetport="p0">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="13"/>
+			</data>
+		</edge>
+		<edge id="e7" source="n2::n13" target="n0::n3" sourceport="p0" targetport="p0">
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="41"/>
+			</data>
+		</edge>
+		<edge id="e8" source="n1::n3" target="n2::n22" sourceport="p2" targetport="p9">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="594.5,-621.25"/>
+					<y:Bend Location="594.5,-298.25"/>
+					<y:Bend Location="354.25,-298.25"/>
+					<y:Bend Location="354.25,88.5"/>
+					<y:Bend Location="354.25,275.25"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="36"/>
+			</data>
+		</edge>
+		<edge id="e9" source="n1::n8" target="n2::n28" sourceport="p3" targetport="p1">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="2133.25,-613.7972272998265"/>
+					<y:Bend Location="2082.375,-602.5472272998265"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="36"/>
+			</data>
+		</edge>
+		<edge id="e10" source="n1::n5" target="n2::n29" sourceport="p2" targetport="p0">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="1732.5982541646708,-633.0472272998265"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="36"/>
+			</data>
+		</edge>
+		<edge id="e11" source="n1::n8" target="n2::n31" sourceport="p5" targetport="p2">
+			<data key="d12">
+				<x:List>
+					<y:Bend Location="2248.1728512034642,-671.4807796857028"/>
+				</x:List>
+			</data>
+			<data key="d13">
+				<y:GraphMLReference ResourceKey="36"/>
+			</data>
+		</edge>
+	</graph>
+</graphml>

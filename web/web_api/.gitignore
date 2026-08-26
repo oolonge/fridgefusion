@@ -1,0 +1,6 @@
+build/
+*.o
+*.a
+fridgefusion_api
+logs/
+*.log

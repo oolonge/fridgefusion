@@ -1,0 +1,186 @@
+# Qt-generated files
+*.pro.user
+*.pro.user.*
+*.qbs.user
+*.qbs.user.*
+*.moc
+moc_*.cpp
+moc_*.h
+qrc_*.cpp
+ui_*.h
+*.qmlc
+*.jsc
+Makefile*
+*build-*
+*.qm
+.qmake.cache
+.qmake.stash
+
+# Qt Creator
+*.autosave
+.qtc_clangd/
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.so.*
+*.dylib
+*.dll
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+FridgeFusion
+*.app/
+
+# Build directories
+build/
+build-*/
+bin/
+lib/
+release/
+debug/
+Debug/
+Release/
+x64/
+x86/
+
+# CLI build artifacts
+cli/build/
+cli/ff
+
+# Qt build artifacts
+*.o.d
+.obj/
+GeneratedFiles/
+
+# CMake
+CMakeLists.txt.user
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+cmake-build-*/
+install_manifest.cmake
+compile_commands.json
+CTestTestfile.cmake
+_deps/
+
+# Testing
+*.gcda
+*.gcno
+*.gcov
+coverage.info
+*.profdata
+*.profraw
+default.profraw
+
+# Qt Designer
+*.ui.autosave
+
+# Qt Linguist
+*.qm
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+Icon
+._*
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+*.stackdump
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.cab
+*.msi
+*.msix
+*.msm
+*.msp
+*.lnk
+
+# Linux
+*~
+.fuse_hidden*
+.directory
+.Trash-*
+.nfs*
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.cproject
+.settings/
+*.iml
+
+# Logs and databases
+*.log
+*.sql
+*.sqlite
+*.db
+*.db-shm
+*.db-wal
+
+# Configuration files with sensitive data
+config.json
+web_api/config/api_config.json
+*.conf
+
+# Exceptions for Lab #5 Docker configurations (not sensitive)
+!docker/**/*.conf
+!docker/**/*.sql
+
+# Dependencies
+node_modules/
+vendor/
+
+# Claude data (flattened file copies for AI)
+claude_data/
+web_api/claude_data/
+
+# Backup files
+*.bak
+*.backup
+*~
+
+# Lab #5 - Load testing artifacts
+*.tsv
+loadtest.png
+results.tsv
+/tmp/headers.txt
+load-test-results/

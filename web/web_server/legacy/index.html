@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FridgeFusion - Legacy версии</title>
+  <link rel="stylesheet" href="/styles/common.css">
+  <link rel="stylesheet" href="/styles/components.css">
+</head>
+<body>
+  <header class="header">
+    <div class="container">
+      <div class="header__inner">
+        <a href="/" class="header__logo">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <rect x="4" y="2" width="16" height="20" rx="2"/>
+            <line x1="4" y1="10" x2="20" y2="10"/>
+            <line x1="10" y1="6" x2="10" y2="6.01"/>
+            <line x1="10" y1="14" x2="10" y2="14.01"/>
+          </svg>
+          FridgeFusion
+        </a>
+
+        <button class="header__menu-btn" onclick="toggleMobileMenu()" aria-label="Menu">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+
+        <nav class="header__nav" id="nav">
+          <a href="/" class="header__link">Главная</a>
+          <a href="/documentation/" class="header__link">Документация</a>
+          <a href="/legacy/" class="header__link header__link--active">Загрузки</a>
+          <a href="/management/" class="header__link">Управление</a>
+          <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">
+            <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="5"/>
+              <line x1="12" y1="1" x2="12" y2="3"/>
+              <line x1="12" y1="21" x2="12" y2="23"/>
+              <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+              <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+              <line x1="1" y1="12" x2="3" y2="12"/>
+              <line x1="21" y1="12" x2="23" y2="12"/>
+              <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+              <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+            </svg>
+            <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display:none;">
+              <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+            </svg>
+          </button>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <main class="main">
+    <div class="container container--narrow">
+      <section class="hero" style="padding-bottom: var(--space-4);">
+        <h1 class="hero__title" style="font-size: 2rem;">Legacy версии FridgeFusion</h1>
+        <p class="hero__subtitle">Скачайте десктопную или консольную версию приложения</p>
+      </section>
+
+      <div class="card-grid--two mb-4" style="display: grid; gap: var(--space-3);">
+        <div class="version-card">
+          <div class="version-card__header">
+            <span class="version-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <rect x="2" y="3" width="20" height="14" rx="2" ry="2"/>
+                <line x1="8" y1="21" x2="16" y2="21"/>
+                <line x1="12" y1="17" x2="12" y2="21"/>
+              </svg>
+            </span>
+            <h2 class="version-card__title">Desktop версия (Qt)</h2>
+          </div>
+          <p class="version-card__description">Полнофункциональное десктопное приложение с графическим интерфейсом. Работает через REST API.</p>
+          <ul class="version-card__features">
+            <li>Графический интерфейс на Qt 6</li>
+            <li>Поиск рецептов по ингредиентам</li>
+            <li>Управление избранными рецептами</li>
+            <li>Просмотр и добавление отзывов</li>
+          </ul>
+          <div class="version-card__actions">
+            <a href="#" class="btn btn--primary">Скачать для macOS</a>
+            <a href="#" class="btn btn--secondary">Скачать для Linux</a>
+          </div>
+        </div>
+
+        <div class="version-card">
+          <div class="version-card__header">
+            <span class="version-card__icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <polyline points="4 17 10 11 4 5"/>
+                <line x1="12" y1="19" x2="20" y2="19"/>
+              </svg>
+            </span>
+            <h2 class="version-card__title">CLI версия</h2>
+          </div>
+          <p class="version-card__description">Консольный интерфейс для работы с FridgeFusion через терминал. Работает через REST API.</p>
+          <ul class="version-card__features">
+            <li>Текстовый интерфейс</li>
+            <li>Быстрый поиск рецептов</li>
+            <li>Авторизация через JWT</li>
+            <li>Поддержка всех основных функций</li>
+          </ul>
+          <div class="version-card__actions">
+            <a href="#" class="btn btn--primary">Скачать CLI</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="alert alert--warning">
+        <strong class="alert__title">Примечание</strong>
+        <p class="alert__text">Обе версии требуют запущенного API сервера на порту 8080. Убедитесь, что сервер запущен перед использованием приложений.</p>
+      </div>
+
+      <a href="/" class="back-link">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="19" y1="12" x2="5" y2="12"/>
+          <polyline points="12 19 5 12 12 5"/>
+        </svg>
+        Вернуться на главную
+      </a>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p class="footer__text">FridgeFusion &copy; 2025</p>
+    </div>
+  </footer>
+
+  <script>
+    function getPreferredTheme() {
+      const stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function setTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      localStorage.setItem('theme', theme);
+      updateThemeIcon(theme);
+    }
+
+    function updateThemeIcon(theme) {
+      const sunIcon = document.querySelector('.icon-sun');
+      const moonIcon = document.querySelector('.icon-moon');
+      if (sunIcon && moonIcon) {
+        if (theme === 'dark') {
+          sunIcon.style.display = 'none';
+          moonIcon.style.display = 'block';
+        } else {
+          sunIcon.style.display = 'block';
+          moonIcon.style.display = 'none';
+        }
+      }
+    }
+
+    function toggleTheme() {
+      const current = document.documentElement.getAttribute('data-theme') || getPreferredTheme();
+      const next = current === 'dark' ? 'light' : 'dark';
+      setTheme(next);
+    }
+
+    function toggleMobileMenu() {
+      const nav = document.getElementById('nav');
+      nav.classList.toggle('header__nav--open');
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      setTheme(getPreferredTheme());
+    });
+
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', (e) => {
+      if (!localStorage.getItem('theme')) {
+        setTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+  </script>
+</body>
+</html>

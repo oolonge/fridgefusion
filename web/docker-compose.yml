@@ -1,0 +1,512 @@
+# FridgeFusion Microservices Architecture (Lab 6)
+# 4 services x 3 instances = 12 service containers
+# Architecture: Gateway -> Auth -> Core -> Data -> PostgreSQL
+
+services:
+  # ==================== DATABASE LAYER ====================
+
+  # PostgreSQL Master (Read-Write)
+  postgres-master:
+    image: postgres:16-alpine
+    container_name: fridgefusion-postgres-master
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_DB: fridgefusion
+      POSTGRES_HOST_AUTH_METHOD: md5
+    volumes:
+      - postgres-master-data:/var/lib/postgresql/data
+      - ./docker/postgres/master/init.sh:/docker-entrypoint-initdb.d/01-init.sh
+      - ./docker/postgres/init-db.sql:/docker-entrypoint-initdb.d/02-init-db.sql
+      - ./docker/postgres/master/postgresql.conf:/etc/postgresql/postgresql.conf
+      - ./docker/postgres/master/pg_hba.conf:/etc/postgresql/pg_hba.conf
+    command: postgres -c config_file=/etc/postgresql/postgresql.conf
+    ports:
+      - "5434:5432"
+    networks:
+      - fridgefusion-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # PostgreSQL Slave (Read-Only Replica)
+  postgres-slave:
+    image: postgres:16-alpine
+    container_name: fridgefusion-postgres-slave
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGUSER: postgres
+      PGPASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      PGDATA: /var/lib/postgresql/data/pgdata
+      POSTGRES_MASTER_HOST: postgres-master
+      POSTGRES_MASTER_PORT: 5432
+    volumes:
+      - postgres-slave-data:/var/lib/postgresql/data
+      - ./docker/postgres/slave/entrypoint.sh:/usr/local/bin/custom-entrypoint.sh
+    entrypoint: ["/usr/local/bin/custom-entrypoint.sh"]
+    ports:
+      - "5435:5432"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ==================== DATA SERVICE LAYER (3 instances) ====================
+
+  # Data Service - Instance 1 (Master - connects to postgres-master for writes)
+  data-service-1:
+    build:
+      context: .
+      dockerfile: services/data-service/docker/Dockerfile
+    container_name: fridgefusion-data-service-1
+    environment:
+      - FRIDGEFUSION_CONFIG=/app/config/config.json
+      - PORT=8082
+    volumes:
+      - ./docker/backend/config-master.json:/app/config/config.json
+      - data-service-1-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      postgres-master:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8082/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Data Service - Instance 2 (Read-Only - connects to postgres-slave)
+  data-service-2:
+    build:
+      context: .
+      dockerfile: services/data-service/docker/Dockerfile
+    container_name: fridgefusion-data-service-2
+    environment:
+      - FRIDGEFUSION_CONFIG=/app/config/config.json
+      - PORT=8082
+    volumes:
+      - ./docker/backend/config-ro1.json:/app/config/config.json
+      - data-service-2-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      postgres-slave:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8082/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Data Service - Instance 3 (Read-Only - connects to postgres-slave)
+  data-service-3:
+    build:
+      context: .
+      dockerfile: services/data-service/docker/Dockerfile
+    container_name: fridgefusion-data-service-3
+    environment:
+      - FRIDGEFUSION_CONFIG=/app/config/config.json
+      - PORT=8082
+    volumes:
+      - ./docker/backend/config-ro2.json:/app/config/config.json
+      - data-service-3-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      postgres-slave:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8082/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # ==================== CORE SERVICE LAYER (3 instances) ====================
+
+  # Core Service - Instance 1
+  core-service-1:
+    build:
+      context: .
+      dockerfile: services/core-service/docker/Dockerfile
+    container_name: fridgefusion-core-service-1
+    environment:
+      - DATA_SERVICE_URL=http://internal-lb:8082
+      - PORT=8081
+    volumes:
+      - core-service-1-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - data-service-1
+      - data-service-2
+      - data-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Core Service - Instance 2
+  core-service-2:
+    build:
+      context: .
+      dockerfile: services/core-service/docker/Dockerfile
+    container_name: fridgefusion-core-service-2
+    environment:
+      - DATA_SERVICE_URL=http://internal-lb:8082
+      - PORT=8081
+    volumes:
+      - core-service-2-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - data-service-1
+      - data-service-2
+      - data-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Core Service - Instance 3
+  core-service-3:
+    build:
+      context: .
+      dockerfile: services/core-service/docker/Dockerfile
+    container_name: fridgefusion-core-service-3
+    environment:
+      - DATA_SERVICE_URL=http://internal-lb:8082
+      - PORT=8081
+    volumes:
+      - core-service-3-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - data-service-1
+      - data-service-2
+      - data-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # ==================== AUTH SERVICE LAYER (3 instances) ====================
+
+  # Auth Service - Instance 1
+  auth-service-1:
+    build:
+      context: .
+      dockerfile: services/auth-service/docker/Dockerfile
+    container_name: fridgefusion-auth-service-1
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - PORT=8083
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - JWT_ISSUER=FridgeFusion
+      - JWT_EXPIRATION_HOURS=24
+      - JWT_REFRESH_EXPIRATION_DAYS=7
+    volumes:
+      - auth-service-1-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - core-service-1
+      - core-service-2
+      - core-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8083/auth/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Auth Service - Instance 2
+  auth-service-2:
+    build:
+      context: .
+      dockerfile: services/auth-service/docker/Dockerfile
+    container_name: fridgefusion-auth-service-2
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - PORT=8083
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - JWT_ISSUER=FridgeFusion
+      - JWT_EXPIRATION_HOURS=24
+      - JWT_REFRESH_EXPIRATION_DAYS=7
+    volumes:
+      - auth-service-2-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - core-service-1
+      - core-service-2
+      - core-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8083/auth/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Auth Service - Instance 3
+  auth-service-3:
+    build:
+      context: .
+      dockerfile: services/auth-service/docker/Dockerfile
+    container_name: fridgefusion-auth-service-3
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - PORT=8083
+      - JWT_SECRET=${JWT_SECRET:-change-me-in-production}
+      - JWT_ISSUER=FridgeFusion
+      - JWT_EXPIRATION_HOURS=24
+      - JWT_REFRESH_EXPIRATION_DAYS=7
+    volumes:
+      - auth-service-3-logs:/app/logs
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - core-service-1
+      - core-service-2
+      - core-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8083/auth/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # ==================== GATEWAY SERVICE LAYER (3 instances) ====================
+
+  # Gateway Service - Instance 1
+  gateway-service-1:
+    build:
+      context: .
+      dockerfile: services/gateway-service/docker/Dockerfile
+    container_name: fridgefusion-gateway-service-1
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - AUTH_SERVICE_URL=http://internal-lb:8083
+      - PORT=8080
+    volumes:
+      - gateway-service-1-logs:/app/logs
+    ports:
+      - "8080:8080"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - internal-lb
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/v2/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Gateway Service - Instance 2
+  gateway-service-2:
+    build:
+      context: .
+      dockerfile: services/gateway-service/docker/Dockerfile
+    container_name: fridgefusion-gateway-service-2
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - AUTH_SERVICE_URL=http://internal-lb:8083
+      - PORT=8080
+    volumes:
+      - gateway-service-2-logs:/app/logs
+    ports:
+      - "8081:8080"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - internal-lb
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/v2/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # Gateway Service - Instance 3
+  gateway-service-3:
+    build:
+      context: .
+      dockerfile: services/gateway-service/docker/Dockerfile
+    container_name: fridgefusion-gateway-service-3
+    environment:
+      - CORE_SERVICE_URL=http://internal-lb:8081
+      - AUTH_SERVICE_URL=http://internal-lb:8083
+      - PORT=8080
+    volumes:
+      - gateway-service-3-logs:/app/logs
+    ports:
+      - "8082:8080"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - internal-lb
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8080/api/v2/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+      start_period: 40s
+
+  # ==================== LOAD BALANCERS ====================
+
+  # Internal Load Balancer (for inter-service communication)
+  internal-lb:
+    image: caddy:2-alpine
+    container_name: fridgefusion-internal-lb
+    volumes:
+      - ./docker/caddy/Caddyfile.internal:/etc/caddy/Caddyfile
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - data-service-1
+      - data-service-2
+      - data-service-3
+      - core-service-1
+      - core-service-2
+      - core-service-3
+      - auth-service-1
+      - auth-service-2
+      - auth-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8081/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # Caddy Web Server (External Load Balancer + Reverse Proxy)
+  caddy:
+    image: caddy:2-alpine
+    container_name: fridgefusion-caddy
+    volumes:
+      - ./docker/caddy/Caddyfile:/etc/caddy/Caddyfile
+      - ./web_server:/srv/web_server
+      - caddy-data:/data
+      - caddy-config:/config
+      - caddy-logs:/var/log/caddy
+    ports:
+      - "9000:8000"
+      - "9443:8443"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - gateway-service-1
+      - gateway-service-2
+      - gateway-service-3
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:8000/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+  # ==================== MONITORING ====================
+
+  # Loki - Log Aggregation
+  loki:
+    image: grafana/loki:2.9.3
+    container_name: fridgefusion-loki
+    volumes:
+      - ./docker/loki/loki-config.yml:/etc/loki/loki-config.yml
+      - loki-data:/loki
+    command: -config.file=/etc/loki/loki-config.yml
+    ports:
+      - "3100:3100"
+    networks:
+      - fridgefusion-network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3100/ready"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Promtail - Log Shipper
+  promtail:
+    image: grafana/promtail:2.9.3
+    container_name: fridgefusion-promtail
+    volumes:
+      - ./docker/promtail/promtail-config.yml:/etc/promtail/promtail-config.yml
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    command: -config.file=/etc/promtail/promtail-config.yml
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - loki
+
+  # Grafana - Monitoring Dashboard
+  grafana:
+    image: grafana/grafana:10.2.3
+    container_name: fridgefusion-grafana
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=admin
+      - GF_USERS_ALLOW_SIGN_UP=false
+    volumes:
+      - ./docker/grafana/datasources.yml:/etc/grafana/provisioning/datasources/datasources.yml
+      - ./docker/grafana/dashboards.yml:/etc/grafana/provisioning/dashboards/dashboards.yml
+      - grafana-data:/var/lib/grafana
+    ports:
+      - "3000:3000"
+    networks:
+      - fridgefusion-network
+    depends_on:
+      - loki
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "-q", "http://localhost:3000/api/health"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+networks:
+  fridgefusion-network:
+    driver: bridge
+
+volumes:
+  # Database
+  postgres-master-data:
+  postgres-slave-data:
+  # Data Service
+  data-service-1-logs:
+  data-service-2-logs:
+  data-service-3-logs:
+  # Core Service
+  core-service-1-logs:
+  core-service-2-logs:
+  core-service-3-logs:
+  # Auth Service
+  auth-service-1-logs:
+  auth-service-2-logs:
+  auth-service-3-logs:
+  # Gateway Service
+  gateway-service-1-logs:
+  gateway-service-2-logs:
+  gateway-service-3-logs:
+  # Caddy
+  caddy-data:
+  caddy-config:
+  caddy-logs:
+  # Monitoring
+  loki-data:
+  grafana-data:

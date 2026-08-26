@@ -1,0 +1,1319 @@
+openapi: 3.1.1
+info:
+  title: FridgeFusion REST API
+  version: 2.0.0
+  description: API для системы управления рецептами и подбора блюд по доступным ингредиентам
+
+servers:
+  - url: http://localhost:8080/api/v2
+    description: Development server
+
+tags:
+  - name: auth
+    description: Аутентификация и авторизация
+  - name: recipes
+    description: Управление рецептами
+  - name: users
+    description: Управление пользователями
+  - name: ingredients
+    description: Управление ингредиентами
+  - name: categories
+    description: Категории рецептов
+  - name: favorites
+    description: Избранные рецепты
+  - name: reviews
+    description: Отзывы о рецептах
+  - name: admin
+    description: Административный функционал
+
+paths:
+  # ==================== AUTH ====================
+  /auth/register:
+    post:
+      tags:
+        - auth
+      summary: Регистрация нового пользователя
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UserRegistration'
+      responses:
+        '201':
+          description: Пользователь успешно зарегистрирован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResult'
+        '400':
+          description: Невалидные данные для регистрации
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid input data"
+                details:
+                  field: "password"
+                  reason: "Password must be at least 6 characters long"
+        '409':
+          description: Email или username уже зарегистрирован
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "CONFLICT"
+                message: "User already exists"
+                details:
+                  field: "email"
+                  reason: "Email is already registered"
+
+  /auth/login:
+    post:
+      tags:
+        - auth
+      summary: Вход в систему
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - email
+                - password
+              properties:
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 6
+      responses:
+        '200':
+          description: Успешная авторизация
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AuthResult'
+        '400':
+          description: Невалидные данные (некорректный формат email или отсутствие обязательных полей)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid request format"
+                details:
+                  field: "email"
+                  reason: "Invalid email format"
+        '401':
+          description: Неверные учетные данные (неправильный пароль или пользователь не найден)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "UNAUTHORIZED"
+                message: "Invalid credentials"
+
+  /auth/logout:
+    post:
+      tags:
+        - auth
+      summary: Выход из системы
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Успешный выход
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  # ==================== RECIPES ====================
+  /recipes:
+    get:
+      tags:
+        - recipes
+      summary: Получить список рецептов
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 20
+            minimum: 1
+            maximum: 100
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - name: category_id
+          in: query
+          schema:
+            type: integer
+        - name: ingredients
+          in: query
+          description: Список ID ингредиентов через запятую
+          schema:
+            type: string
+            example: "1,2,3"
+      responses:
+        '200':
+          description: Список рецептов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  recipes:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/RecipePreview'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '400':
+          description: Невалидные параметры запроса (limit вне диапазона, некорректный формат ingredients)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid query parameters"
+                details:
+                  field: "limit"
+                  reason: "Limit must be between 1 and 100"
+
+    post:
+      tags:
+        - recipes
+      summary: Создать новый рецепт
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeCreate'
+      responses:
+        '201':
+          description: Рецепт создан
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Невалидные данные (отсутствие обязательных полей, некорректные значения времени приготовления)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid recipe data"
+                details:
+                  field: "preparation_time"
+                  reason: "Preparation time must be a positive integer"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Несуществующий ingredient_id, category_id или unit_id
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "NOT_FOUND"
+                message: "Referenced resource not found"
+                details:
+                  field: "ingredient_id"
+                  reason: "Ingredient with id 999 does not exist"
+
+  /recipes/{id}:
+    parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+
+    get:
+      tags:
+        - recipes
+      summary: Получить подробную информацию о рецепте
+      responses:
+        '200':
+          description: Детальная информация о рецепте
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/RecipeDetail'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    put:
+      tags:
+        - recipes
+      summary: Полное обновление рецепта
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/RecipeCreate'
+      responses:
+        '200':
+          description: Рецепт обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Невалидные данные обновления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid update data"
+                details:
+                  field: "cooking_time"
+                  reason: "Cooking time cannot be negative"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          description: Рецепт не найден или несуществующие связанные ресурсы (ингредиенты, категории)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    patch:
+      tags:
+        - recipes
+      summary: Частичное обновление рецепта
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                description:
+                  type: string
+                preparation_time:
+                  type: integer
+                cooking_time:
+                  type: integer
+      responses:
+        '200':
+          description: Рецепт обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Recipe'
+        '400':
+          description: Невалидные данные обновления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid patch data"
+                details:
+                  field: "preparation_time"
+                  reason: "Must be a positive integer"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+    delete:
+      tags:
+        - recipes
+      summary: Удалить рецепт
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Рецепт удален
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ==================== USERS ====================
+  /users/me:
+    get:
+      tags:
+        - users
+      summary: Получить профиль текущего пользователя
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Профиль пользователя
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    put:
+      tags:
+        - users
+      summary: Обновить профиль
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                  minLength: 3
+                  maxLength: 50
+                email:
+                  type: string
+                  format: email
+                password:
+                  type: string
+                  minLength: 6
+      responses:
+        '200':
+          description: Профиль обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserProfile'
+        '400':
+          description: Невалидные данные (некорректный формат email, слишком короткий username или пароль)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid profile data"
+                details:
+                  field: "username"
+                  reason: "Username must be at least 3 characters long"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '409':
+          description: Email или username уже используется другим пользователем
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "CONFLICT"
+                message: "Email already in use"
+                details:
+                  field: "email"
+
+    delete:
+      tags:
+        - users
+      summary: Удалить аккаунт
+      security:
+        - bearerAuth: []
+      responses:
+        '204':
+          description: Аккаунт удален
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+  /users/{id}:
+    get:
+      tags:
+        - users
+      summary: Получить информацию о пользователе
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Информация о пользователе
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UserPublic'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ==================== INGREDIENTS ====================
+  /ingredients:
+    get:
+      tags:
+        - ingredients
+      summary: Получить список всех ингредиентов
+      parameters:
+        - name: search
+          in: query
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Список ингредиентов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Ingredient'
+
+  /ingredients/{id}/substitutes:
+    get:
+      tags:
+        - ingredients
+      summary: Получить заменители ингредиента
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 5
+            minimum: 1
+            maximum: 20
+      responses:
+        '200':
+          description: Список заменителей
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    ingredient:
+                      $ref: '#/components/schemas/Ingredient'
+                    similarity:
+                      type: number
+                      format: float
+                      minimum: 0
+                      maximum: 1
+        '400':
+          description: Невалидный параметр limit (отрицательное значение или вне диапазона)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid limit parameter"
+                details:
+                  field: "limit"
+                  reason: "Limit must be between 1 and 20"
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ==================== CATEGORIES ====================
+  /categories:
+    get:
+      tags:
+        - categories
+      summary: Получить список категорий
+      responses:
+        '200':
+          description: Список категорий
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+  # ==================== FAVORITES ====================
+  /favorites:
+    get:
+      tags:
+        - favorites
+      summary: Получить избранные рецепты
+      security:
+        - bearerAuth: []
+      responses:
+        '200':
+          description: Список избранных рецептов
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Favorite'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+
+    post:
+      tags:
+        - favorites
+      summary: Добавить рецепт в избранное
+      security:
+        - bearerAuth: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - recipe_id
+              properties:
+                recipe_id:
+                  type: integer
+      responses:
+        '201':
+          description: Добавлено в избранное
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Favorite'
+        '400':
+          description: Невалидные данные (отсутствует recipe_id или некорректный формат)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid request data"
+                details:
+                  field: "recipe_id"
+                  reason: "recipe_id is required and must be an integer"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Рецепт не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "NOT_FOUND"
+                message: "Recipe not found"
+        '409':
+          description: Рецепт уже добавлен в избранное
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "CONFLICT"
+                message: "Recipe already in favorites"
+                details:
+                  recipe_id: 123
+
+  /favorites/{recipe_id}:
+    delete:
+      tags:
+        - favorites
+      summary: Удалить рецепт из избранного
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Удалено из избранного
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Рецепт не найден в избранном или не существует
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  # ==================== REVIEWS ====================
+  /recipes/{recipe_id}/reviews:
+    get:
+      tags:
+        - reviews
+      summary: Получить отзывы о рецепте
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: Список отзывов
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reviews:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/Review'
+                  average_rating:
+                    type: number
+                    format: float
+                  total_count:
+                    type: integer
+        '404':
+          description: Рецепт не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+    post:
+      tags:
+        - reviews
+      summary: Добавить отзыв
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - rating
+              properties:
+                rating:
+                  type: integer
+                  minimum: 1
+                  maximum: 5
+                comment:
+                  type: string
+      responses:
+        '201':
+          description: Отзыв добавлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '400':
+          description: Невалидные данные (rating вне диапазона 1-5, слишком длинный комментарий)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid review data"
+                details:
+                  field: "rating"
+                  reason: "Rating must be between 1 and 5"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          description: Рецепт не найден
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Пользователь уже оставил отзыв на этот рецепт
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "CONFLICT"
+                message: "Review already exists"
+                details:
+                  recipe_id: 123
+                  user_id: 456
+
+    put:
+      tags:
+        - reviews
+      summary: Обновить отзыв
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: recipe_id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                rating:
+                  type: integer
+                  minimum: 1
+                  maximum: 5
+                comment:
+                  type: string
+      responses:
+        '200':
+          description: Отзыв обновлен
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Review'
+        '400':
+          description: Невалидные данные обновления
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid review data"
+                details:
+                  field: "rating"
+                  reason: "Rating must be between 1 and 5"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          description: Попытка редактировать чужой отзыв
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Отзыв не найден или рецепт не существует
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /reviews/{id}:
+    delete:
+      tags:
+        - reviews
+      summary: Удалить отзыв
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Отзыв удален
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  # ==================== ADMIN ====================
+  /admin/users:
+    get:
+      tags:
+        - admin
+      summary: Получить список всех пользователей
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: limit
+          in: query
+          schema:
+            type: integer
+            default: 100
+            minimum: 1
+            maximum: 500
+        - name: offset
+          in: query
+          schema:
+            type: integer
+            default: 0
+            minimum: 0
+        - name: role
+          in: query
+          schema:
+            type: string
+            enum: [USER, ADMIN]
+      responses:
+        '200':
+          description: Список пользователей
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  users:
+                    type: array
+                    items:
+                      $ref: '#/components/schemas/User'
+                  total:
+                    type: integer
+                  limit:
+                    type: integer
+                  offset:
+                    type: integer
+        '400':
+          description: Невалидные параметры запроса
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid query parameters"
+                details:
+                  field: "role"
+                  reason: "Role must be either USER or ADMIN"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+
+  /admin/users/{id}/role:
+    patch:
+      tags:
+        - admin
+      summary: Изменить роль пользователя
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+                - role
+              properties:
+                role:
+                  type: string
+                  enum: [USER, ADMIN]
+      responses:
+        '200':
+          description: Роль обновлена
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+        '400':
+          description: Невалидное значение role
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "VALIDATION_ERROR"
+                message: "Invalid role value"
+                details:
+                  field: "role"
+                  reason: "Role must be either USER or ADMIN"
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+  /admin/users/{id}:
+    delete:
+      tags:
+        - admin
+      summary: Удалить пользователя
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: Пользователь удален
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '403':
+          $ref: '#/components/responses/Forbidden'
+        '404':
+          $ref: '#/components/responses/NotFound'
+
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+
+  schemas:
+    # ==================== USER SCHEMAS ====================
+    User:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum: [USER, ADMIN]
+        registration_date:
+          type: string
+          format: date-time
+
+    UserPublic:
+      type: object
+      properties:
+        id:
+          type: integer
+        username:
+          type: string
+
+    UserProfile:
+      allOf:
+        - $ref: '#/components/schemas/User'
+        - type: object
+          properties:
+            favorites_count:
+              type: integer
+            reviews_count:
+              type: integer
+            recipes_count:
+              type: integer
+
+    UserRegistration:
+      type: object
+      required:
+        - username
+        - email
+        - password
+      properties:
+        username:
+          type: string
+          minLength: 3
+          maxLength: 50
+        email:
+          type: string
+          format: email
+        password:
+          type: string
+          minLength: 6
+
+    AuthResult:
+      type: object
+      properties:
+        token:
+          type: string
+        user:
+          $ref: '#/components/schemas/User'
+        success:
+          type: boolean
+        message:
+          type: string
+
+    # ==================== RECIPE SCHEMAS ====================
+    Recipe:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+        preparation_time:
+          type: integer
+          description: Время подготовки в минутах
+        cooking_time:
+          type: integer
+          description: Время приготовления в минутах
+        author_id:
+          type: integer
+        categories:
+          type: array
+          items:
+            type: integer
+
+    RecipePreview:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        short_description:
+          type: string
+        total_time:
+          type: integer
+        average_rating:
+          type: number
+          format: float
+        main_ingredients:
+          type: array
+          items:
+            type: string
+        author_name:
+          type: string
+
+    RecipeDetail:
+      allOf:
+        - $ref: '#/components/schemas/Recipe'
+        - type: object
+          properties:
+            instructions:
+              type: array
+              items:
+                type: string
+            ingredients:
+              type: array
+              items:
+                type: object
+                properties:
+                  id:
+                    type: integer
+                  name:
+                    type: string
+                  quantity:
+                    type: number
+                  unit:
+                    type: string
+                  is_optional:
+                    type: boolean
+                  substitutes:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+            average_rating:
+              type: number
+              format: float
+            review_count:
+              type: integer
+            is_favorite:
+              type: boolean
+
+    RecipeCreate:
+      type: object
+      required:
+        - name
+        - description
+        - preparation_time
+        - cooking_time
+        - instructions
+        - ingredients
+      properties:
+        name:
+          type: string
+        description:
+          type: string
+        preparation_time:
+          type: integer
+          minimum: 0
+        cooking_time:
+          type: integer
+          minimum: 0
+        instructions:
+          type: array
+          items:
+            type: string
+        categories:
+          type: array
+          items:
+            type: integer
+        ingredients:
+          type: array
+          items:
+            type: object
+            required:
+              - ingredient_id
+              - quantity
+              - unit_id
+            properties:
+              ingredient_id:
+                type: integer
+              quantity:
+                type: number
+                minimum: 0
+              unit_id:
+                type: integer
+              is_optional:
+                type: boolean
+                default: false
+
+    # ==================== OTHER SCHEMAS ====================
+    Ingredient:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        calories:
+          type: number
+          format: float
+        default_unit_id:
+          type: integer
+
+    Category:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        description:
+          type: string
+
+    Favorite:
+      type: object
+      properties:
+        id:
+          type: integer
+        recipe_id:
+          type: integer
+        recipe_name:
+          type: string
+        date_added:
+          type: string
+          format: date-time
+
+    Review:
+      type: object
+      properties:
+        id:
+          type: integer
+        user_id:
+          type: integer
+        username:
+          type: string
+        recipe_id:
+          type: integer
+        rating:
+          type: integer
+          minimum: 1
+          maximum: 5
+        comment:
+          type: string
+        date_posted:
+          type: string
+          format: date-time
+
+    Error:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Код ошибки для программной обработки
+        message:
+          type: string
+          description: Человекочитаемое описание ошибки
+        details:
+          type: object
+          description: Дополнительная информация об ошибке
+          additionalProperties: true
+
+  responses:
+    BadRequest:
+      description: Некорректный запрос
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "VALIDATION_ERROR"
+            message: "Invalid request data"
+
+    Unauthorized:
+      description: Требуется авторизация
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "UNAUTHORIZED"
+            message: "Authentication required"
+
+    Forbidden:
+      description: Доступ запрещен
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "FORBIDDEN"
+            message: "Access denied"
+
+    NotFound:
+      description: Ресурс не найден
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+          example:
+            error: "NOT_FOUND"
+            message: "Resource not found"

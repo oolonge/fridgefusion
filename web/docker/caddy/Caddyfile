@@ -1,0 +1,147 @@
+# FridgeFusion Load Balancer and Reverse Proxy
+# Lab #6 Microservices Configuration with HTTP/2, Load Balancing
+# Bonus #1: HTTP/2 via h2c (HTTP/2 cleartext) - no TLS required
+
+# Global options
+{
+	admin 0.0.0.0:2019
+
+	auto_https off
+
+	# Enable HTTP/2 over cleartext (h2c) - Bonus #1
+	servers {
+		protocols h1 h2c
+	}
+}
+
+# HTTP/2 server (port 8000) with h2c support
+http://:8000 {
+	# Enable gzip compression for all responses
+	encode gzip
+
+	# Custom Server header
+	header Server "FridgeFusion/2.0 (Lab#6)"
+
+	# Logging
+	log {
+		output file /var/log/caddy/access.log
+		format console
+	}
+
+	# === MAIN APPLICATION (/) ===
+
+	# API Routes - Load Balanced
+	# GET requests: weighted 2:1:1 (master:ro1:ro2)
+	# POST/PUT/PATCH/DELETE: only master
+	@api_get {
+		path /api/v2/*
+		method GET
+	}
+
+	@api_write {
+		path /api/v2/*
+		method POST PUT PATCH DELETE
+	}
+
+	# GET requests - load balanced across Gateway services (2:1:1)
+	handle @api_get {
+		reverse_proxy gateway-service-1:8080 gateway-service-1:8080 gateway-service-2:8080 gateway-service-3:8080 {
+			lb_policy round_robin
+
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			fail_duration 30s
+			max_fails 3
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# POST/PUT/PATCH/DELETE requests - load balanced across Gateway services
+	handle @api_write {
+		reverse_proxy gateway-service-1:8080 gateway-service-2:8080 gateway-service-3:8080 {
+			lb_policy round_robin
+
+			health_uri /api/v2/health
+			health_interval 10s
+			health_timeout 5s
+			health_status 2xx
+
+			fail_duration 30s
+			max_fails 3
+
+			# Headers
+			header_up X-Real-IP {remote_host}
+		}
+	}
+
+	# Swagger documentation
+	handle /api/docs {
+		reverse_proxy gateway-service-1:8080
+	}
+
+	handle /api/docs/* {
+		reverse_proxy gateway-service-1:8080
+	}
+
+	handle /swagger_ui/* {
+		reverse_proxy gateway-service-1:8080
+	}
+
+	# Static files - with caching
+	@static {
+		path /styles/* /legacy/* /documentation/* /reserved/* /status/* /management/*
+	}
+
+	handle @static {
+		# Cache static files for 1 hour
+		header Cache-Control "public, max-age=3600"
+
+		# Serve static files
+		root * /srv/web_server
+		file_server
+	}
+
+	# Admin - Adminer proxy
+	handle /admin/* {
+		reverse_proxy localhost:8081
+	}
+
+	handle /admin {
+		redir /admin/ permanent
+	}
+
+	# Metrics endpoint
+	handle /metrics {
+		metrics
+	}
+
+	# Health endpoint for Caddy itself
+	handle /health {
+		respond "OK" 200
+	}
+
+	# === MONITORING (/monitoring) ===
+
+	# Grafana dashboard
+	handle_path /monitoring/* {
+		reverse_proxy grafana:3000
+	}
+
+	handle /monitoring {
+		redir /monitoring/ permanent
+	}
+
+	# === DEFAULT (/) ===
+
+	# Main page - static SPA
+	handle {
+		root * /srv/web_server/static
+		try_files {path} /index.html
+		file_server
+	}
+}

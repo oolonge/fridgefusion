@@ -1,0 +1,12 @@
+{
+    "database": {
+        "host": "postgres-master",
+        "name": "fridgefusion",
+        "password": "postgres_secret",
+        "port": 5432,
+        "username": "postgres"
+    },
+    "logging": {
+        "directory": "/app/logs"
+    }
+}

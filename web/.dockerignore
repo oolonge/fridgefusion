@@ -1,0 +1,55 @@
+# Build artifacts - exclude from Docker build context
+build/
+build-*/
+**/build/
+**/build-*/
+
+# CMake artifacts
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+**/CMakeCache.txt
+**/CMakeFiles/
+
+# Qt build artifacts
+*.o
+*.a
+*.so
+*.dylib
+moc_*.cpp
+moc_*.h
+ui_*.h
+qrc_*.cpp
+*.pro.user
+*.pro.user.*
+.qmake.cache
+.qmake.stash
+Makefile*
+
+# lib directory (will be rebuilt inside Docker)
+lib/
+**/lib/*.a
+
+# Logs
+*.log
+logs/
+
+# IDE files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Git
+.git/
+.gitignore
+
+# Documentation (not needed for build)
+*.md
+docs/
+schemes/
+
+# Docker files (don't copy Docker configs into build context twice)
+docker-compose.yml
+Dockerfile
+.dockerignore

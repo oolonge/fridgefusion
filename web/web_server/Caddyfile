@@ -1,0 +1,97 @@
+# FridgeFusion Web Server Configuration
+# Caddy 
+
+:8000 {
+	log {
+		output file /tmp/caddy_access.log
+		format console
+	}
+
+	# API ROUTES
+
+	# Проксирование API на /api/v2
+	handle /api/v2/* {
+		reverse_proxy localhost:8080
+	}
+
+	# Swagger документация (встроена в API)
+	handle /api/docs {
+		reverse_proxy localhost:8080
+	}
+
+	handle /api/docs/* {
+		reverse_proxy localhost:8080
+	}
+
+	# Swagger static files (проксирование на API)
+	handle /swagger_ui/* {
+		reverse_proxy localhost:8080
+	}
+
+	# STATIC PAGES
+
+	# Общие стили для всех страниц
+	handle /styles/* {
+		uri strip_prefix /styles
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/styles
+		file_server
+	}
+
+	# Legacy страница с ссылками на CLI/Desktop
+	handle /legacy/* {
+		uri strip_prefix /legacy
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/legacy
+		file_server
+	}
+
+	# Documentation - README.md
+	handle /documentation/* {
+		uri strip_prefix /documentation
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/documentation
+		file_server
+	}
+
+	# /reserved/ отдаёт ту же страницу что и /
+	handle /reserved/* {
+		uri strip_prefix /reserved
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/static
+		file_server
+	}
+
+	# Admin - проксирование на Adminer (PHP)
+	handle /admin/* {
+		reverse_proxy localhost:8081
+	}
+
+	handle /admin {
+		redir /admin/ permanent
+	}
+
+	# Status страница сервера
+	handle /status/* {
+		uri strip_prefix /status
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/status
+		file_server
+	}
+
+	# Management страница со ссылками
+	handle /management/* {
+		uri strip_prefix /management
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/management
+		file_server
+	}
+
+	# Метрики Caddy (для status страницы)
+	handle /metrics {
+		metrics
+	}
+
+	# DEFAULT
+
+	# Главная страница - статика (будущее SPA)
+	handle {
+		root * /Users/administrator/Desktop/Web/FridgeFusion/web_server/static
+		try_files {path} /index.html
+		file_server
+	}
+}

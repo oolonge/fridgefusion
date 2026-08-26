@@ -1,0 +1,39 @@
+# Internal Load Balancer for Microservices
+# Distributes traffic between service replicas
+
+{
+	admin off
+}
+
+# Auth Service Load Balancer (port 8083)
+:8083 {
+	reverse_proxy auth-service-1:8083 auth-service-2:8083 auth-service-3:8083 {
+		lb_policy round_robin
+		health_uri /auth/health
+		health_interval 5s
+		health_timeout 3s
+		fail_duration 10s
+	}
+}
+
+# Core Service Load Balancer (port 8081)
+:8081 {
+	reverse_proxy core-service-1:8081 core-service-2:8081 core-service-3:8081 {
+		lb_policy round_robin
+		health_uri /health
+		health_interval 5s
+		health_timeout 3s
+		fail_duration 10s
+	}
+}
+
+# Data Service Load Balancer (port 8082)
+:8082 {
+	reverse_proxy data-service-1:8082 data-service-2:8082 data-service-3:8082 {
+		lb_policy round_robin
+		health_uri /health
+		health_interval 5s
+		health_timeout 3s
+		fail_duration 10s
+	}
+}
